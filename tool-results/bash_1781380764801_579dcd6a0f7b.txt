@@ -1,0 +1,674 @@
+On branch main
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   releases/AxiomRPG-linux64.zip
+	new file:   releases/AxiomRPG-linux64/AxiomRPG.AI.dll
+	modified:   releases/AxiomRPG-linux64/AxiomRPG.AI.pdb
+	new file:   releases/AxiomRPG-linux64/AxiomRPG.Core.dll
+	modified:   releases/AxiomRPG-linux64/AxiomRPG.Core.pdb
+	new file:   releases/AxiomRPG-linux64/AxiomRPG.Data.dll
+	modified:   releases/AxiomRPG-linux64/AxiomRPG.Data.pdb
+	new file:   releases/AxiomRPG-linux64/AxiomRPG.ECS.dll
+	modified:   releases/AxiomRPG-linux64/AxiomRPG.ECS.pdb
+	modified:   releases/AxiomRPG-linux64/AxiomRPG.Game
+	new file:   releases/AxiomRPG-linux64/AxiomRPG.Game.deps.json
+	new file:   releases/AxiomRPG-linux64/AxiomRPG.Game.dll
+	modified:   releases/AxiomRPG-linux64/AxiomRPG.Game.pdb
+	new file:   releases/AxiomRPG-linux64/AxiomRPG.Game.runtimeconfig.json
+	new file:   releases/AxiomRPG-linux64/AxiomRPG.Rendering.dll
+	modified:   releases/AxiomRPG-linux64/AxiomRPG.Rendering.pdb
+	new file:   releases/AxiomRPG-linux64/AxiomRPG.Simulation.dll
+	modified:   releases/AxiomRPG-linux64/AxiomRPG.Simulation.pdb
+	new file:   releases/AxiomRPG-linux64/AxiomRPG.ToolAPI.dll
+	modified:   releases/AxiomRPG-linux64/AxiomRPG.ToolAPI.pdb
+	new file:   releases/AxiomRPG-linux64/AxiomRPG.World.dll
+	modified:   releases/AxiomRPG-linux64/AxiomRPG.World.pdb
+	new file:   releases/AxiomRPG-linux64/Microsoft.CSharp.dll
+	new file:   releases/AxiomRPG-linux64/Microsoft.Extensions.Configuration.Abstractions.dll
+	new file:   releases/AxiomRPG-linux64/Microsoft.Extensions.Configuration.Binder.dll
+	new file:   releases/AxiomRPG-linux64/Microsoft.Extensions.Configuration.dll
+	new file:   releases/AxiomRPG-linux64/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+	new file:   releases/AxiomRPG-linux64/Microsoft.Extensions.DependencyInjection.dll
+	new file:   releases/AxiomRPG-linux64/Microsoft.Extensions.Logging.Abstractions.dll
+	new file:   releases/AxiomRPG-linux64/Microsoft.Extensions.Logging.Configuration.dll
+	new file:   releases/AxiomRPG-linux64/Microsoft.Extensions.Logging.Console.dll
+	new file:   releases/AxiomRPG-linux64/Microsoft.Extensions.Logging.dll
+	new file:   releases/AxiomRPG-linux64/Microsoft.Extensions.Options.ConfigurationExtensions.dll
+	new file:   releases/AxiomRPG-linux64/Microsoft.Extensions.Options.dll
+	new file:   releases/AxiomRPG-linux64/Microsoft.Extensions.Primitives.dll
+	new file:   releases/AxiomRPG-linux64/Microsoft.VisualBasic.Core.dll
+	new file:   releases/AxiomRPG-linux64/Microsoft.VisualBasic.dll
+	new file:   releases/AxiomRPG-linux64/Microsoft.Win32.Primitives.dll
+	new file:   releases/AxiomRPG-linux64/Microsoft.Win32.Registry.dll
+	new file:   releases/AxiomRPG-linux64/System.AppContext.dll
+	new file:   releases/AxiomRPG-linux64/System.Buffers.dll
+	new file:   releases/AxiomRPG-linux64/System.Collections.Concurrent.dll
+	new file:   releases/AxiomRPG-linux64/System.Collections.Immutable.dll
+	new file:   releases/AxiomRPG-linux64/System.Collections.NonGeneric.dll
+	new file:   releases/AxiomRPG-linux64/System.Collections.Specialized.dll
+	new file:   releases/AxiomRPG-linux64/System.Collections.dll
+	new file:   releases/AxiomRPG-linux64/System.ComponentModel.Annotations.dll
+	new file:   releases/AxiomRPG-linux64/System.ComponentModel.DataAnnotations.dll
+	new file:   releases/AxiomRPG-linux64/System.ComponentModel.EventBasedAsync.dll
+	new file:   releases/AxiomRPG-linux64/System.ComponentModel.Primitives.dll
+	new file:   releases/AxiomRPG-linux64/System.ComponentModel.TypeConverter.dll
+	new file:   releases/AxiomRPG-linux64/System.ComponentModel.dll
+	new file:   releases/AxiomRPG-linux64/System.Configuration.dll
+	new file:   releases/AxiomRPG-linux64/System.Console.dll
+	new file:   releases/AxiomRPG-linux64/System.Core.dll
+	new file:   releases/AxiomRPG-linux64/System.Data.Common.dll
+	new file:   releases/AxiomRPG-linux64/System.Data.DataSetExtensions.dll
+	new file:   releases/AxiomRPG-linux64/System.Data.dll
+	new file:   releases/AxiomRPG-linux64/System.Diagnostics.Contracts.dll
+	new file:   releases/AxiomRPG-linux64/System.Diagnostics.Debug.dll
+	new file:   releases/AxiomRPG-linux64/System.Diagnostics.DiagnosticSource.dll
+	new file:   releases/AxiomRPG-linux64/System.Diagnostics.FileVersionInfo.dll
+	new file:   releases/AxiomRPG-linux64/System.Diagnostics.Process.dll
+	new file:   releases/AxiomRPG-linux64/System.Diagnostics.StackTrace.dll
+	new file:   releases/AxiomRPG-linux64/System.Diagnostics.TextWriterTraceListener.dll
+	new file:   releases/AxiomRPG-linux64/System.Diagnostics.Tools.dll
+	new file:   releases/AxiomRPG-linux64/System.Diagnostics.TraceSource.dll
+	new file:   releases/AxiomRPG-linux64/System.Diagnostics.Tracing.dll
+	new file:   releases/AxiomRPG-linux64/System.Drawing.Primitives.dll
+	new file:   releases/AxiomRPG-linux64/System.Drawing.dll
+	new file:   releases/AxiomRPG-linux64/System.Dynamic.Runtime.dll
+	new file:   releases/AxiomRPG-linux64/System.Formats.Asn1.dll
+	new file:   releases/AxiomRPG-linux64/System.Formats.Tar.dll
+	new file:   releases/AxiomRPG-linux64/System.Globalization.Calendars.dll
+	new file:   releases/AxiomRPG-linux64/System.Globalization.Extensions.dll
+	new file:   releases/AxiomRPG-linux64/System.Globalization.dll
+	new file:   releases/AxiomRPG-linux64/System.IO.Compression.Brotli.dll
+	new file:   releases/AxiomRPG-linux64/System.IO.Compression.FileSystem.dll
+	new file:   releases/AxiomRPG-linux64/System.IO.Compression.ZipFile.dll
+	new file:   releases/AxiomRPG-linux64/System.IO.Compression.dll
+	new file:   releases/AxiomRPG-linux64/System.IO.FileSystem.AccessControl.dll
+	new file:   releases/AxiomRPG-linux64/System.IO.FileSystem.DriveInfo.dll
+	new file:   releases/AxiomRPG-linux64/System.IO.FileSystem.Primitives.dll
+	new file:   releases/AxiomRPG-linux64/System.IO.FileSystem.Watcher.dll
+	new file:   releases/AxiomRPG-linux64/System.IO.FileSystem.dll
+	new file:   releases/AxiomRPG-linux64/System.IO.IsolatedStorage.dll
+	new file:   releases/AxiomRPG-linux64/System.IO.MemoryMappedFiles.dll
+	new file:   releases/AxiomRPG-linux64/System.IO.Pipes.AccessControl.dll
+	new file:   releases/AxiomRPG-linux64/System.IO.Pipes.dll
+	new file:   releases/AxiomRPG-linux64/System.IO.UnmanagedMemoryStream.dll
+	new file:   releases/AxiomRPG-linux64/System.IO.dll
+	new file:   releases/AxiomRPG-linux64/System.Linq.Expressions.dll
+	new file:   releases/AxiomRPG-linux64/System.Linq.Parallel.dll
+	new file:   releases/AxiomRPG-linux64/System.Linq.Queryable.dll
+	new file:   releases/AxiomRPG-linux64/System.Linq.dll
+	new file:   releases/AxiomRPG-linux64/System.Memory.dll
+	new file:   releases/AxiomRPG-linux64/System.Net.Http.Json.dll
+	new file:   releases/AxiomRPG-linux64/System.Net.Http.dll
+	new file:   releases/AxiomRPG-linux64/System.Net.HttpListener.dll
+	new file:   releases/AxiomRPG-linux64/System.Net.Mail.dll
+	new file:   releases/AxiomRPG-linux64/System.Net.NameResolution.dll
+	new file:   releases/AxiomRPG-linux64/System.Net.NetworkInformation.dll
+	new file:   releases/AxiomRPG-linux64/System.Net.Ping.dll
+	new file:   releases/AxiomRPG-linux64/System.Net.Primitives.dll
+	new file:   releases/AxiomRPG-linux64/System.Net.Quic.dll
+	new file:   releases/AxiomRPG-linux64/System.Net.Requests.dll
+	new file:   releases/AxiomRPG-linux64/System.Net.Security.dll
+	new file:   releases/AxiomRPG-linux64/System.Net.ServicePoint.dll
+	new file:   releases/AxiomRPG-linux64/System.Net.Sockets.dll
+	new file:   releases/AxiomRPG-linux64/System.Net.WebClient.dll
+	new file:   releases/AxiomRPG-linux64/System.Net.WebHeaderCollection.dll
+	new file:   releases/AxiomRPG-linux64/System.Net.WebProxy.dll
+	new file:   releases/AxiomRPG-linux64/System.Net.WebSockets.Client.dll
+	new file:   releases/AxiomRPG-linux64/System.Net.WebSockets.dll
+	new file:   releases/AxiomRPG-linux64/System.Net.dll
+	new file:   releases/AxiomRPG-linux64/System.Numerics.Vectors.dll
+	new file:   releases/AxiomRPG-linux64/System.Numerics.dll
+	new file:   releases/AxiomRPG-linux64/System.ObjectModel.dll
+	new file:   releases/AxiomRPG-linux64/System.Private.CoreLib.dll
+	new file:   releases/AxiomRPG-linux64/System.Private.DataContractSerialization.dll
+	new file:   releases/AxiomRPG-linux64/System.Private.Uri.dll
+	new file:   releases/AxiomRPG-linux64/System.Private.Xml.Linq.dll
+	new file:   releases/AxiomRPG-linux64/System.Private.Xml.dll
+	new file:   releases/AxiomRPG-linux64/System.Reflection.DispatchProxy.dll
+	new file:   releases/AxiomRPG-linux64/System.Reflection.Emit.ILGeneration.dll
+	new file:   releases/AxiomRPG-linux64/System.Reflection.Emit.Lightweight.dll
+	new file:   releases/AxiomRPG-linux64/System.Reflection.Emit.dll
+	new file:   releases/AxiomRPG-linux64/System.Reflection.Extensions.dll
+	new file:   releases/AxiomRPG-linux64/System.Reflection.Metadata.dll
+	new file:   releases/AxiomRPG-linux64/System.Reflection.Primitives.dll
+	new file:   releases/AxiomRPG-linux64/System.Reflection.TypeExtensions.dll
+	new file:   releases/AxiomRPG-linux64/System.Reflection.dll
+	new file:   releases/AxiomRPG-linux64/System.Resources.Reader.dll
+	new file:   releases/AxiomRPG-linux64/System.Resources.ResourceManager.dll
+	new file:   releases/AxiomRPG-linux64/System.Resources.Writer.dll
+	new file:   releases/AxiomRPG-linux64/System.Runtime.CompilerServices.Unsafe.dll
+	new file:   releases/AxiomRPG-linux64/System.Runtime.CompilerServices.VisualC.dll
+	new file:   releases/AxiomRPG-linux64/System.Runtime.Extensions.dll
+	new file:   releases/AxiomRPG-linux64/System.Runtime.Handles.dll
+	new file:   releases/AxiomRPG-linux64/System.Runtime.InteropServices.JavaScript.dll
+	new file:   releases/AxiomRPG-linux64/System.Runtime.InteropServices.RuntimeInformation.dll
+	new file:   releases/AxiomRPG-linux64/System.Runtime.InteropServices.dll
+	new file:   releases/AxiomRPG-linux64/System.Runtime.Intrinsics.dll
+	new file:   releases/AxiomRPG-linux64/System.Runtime.Loader.dll
+	new file:   releases/AxiomRPG-linux64/System.Runtime.Numerics.dll
+	new file:   releases/AxiomRPG-linux64/System.Runtime.Serialization.Formatters.dll
+	new file:   releases/AxiomRPG-linux64/System.Runtime.Serialization.Json.dll
+	new file:   releases/AxiomRPG-linux64/System.Runtime.Serialization.Primitives.dll
+	new file:   releases/AxiomRPG-linux64/System.Runtime.Serialization.Xml.dll
+	new file:   releases/AxiomRPG-linux64/System.Runtime.Serialization.dll
+	new file:   releases/AxiomRPG-linux64/System.Runtime.dll
+	new file:   releases/AxiomRPG-linux64/System.Security.AccessControl.dll
+	new file:   releases/AxiomRPG-linux64/System.Security.Claims.dll
+	new file:   releases/AxiomRPG-linux64/System.Security.Cryptography.Algorithms.dll
+	new file:   releases/AxiomRPG-linux64/System.Security.Cryptography.Cng.dll
+	new file:   releases/AxiomRPG-linux64/System.Security.Cryptography.Csp.dll
+	new file:   releases/AxiomRPG-linux64/System.Security.Cryptography.Encoding.dll
+	new file:   releases/AxiomRPG-linux64/System.Security.Cryptography.OpenSsl.dll
+	new file:   releases/AxiomRPG-linux64/System.Security.Cryptography.Primitives.dll
+	new file:   releases/AxiomRPG-linux64/System.Security.Cryptography.X509Certificates.dll
+	new file:   releases/AxiomRPG-linux64/System.Security.Cryptography.dll
+	new file:   releases/AxiomRPG-linux64/System.Security.Principal.Windows.dll
+	new file:   releases/AxiomRPG-linux64/System.Security.Principal.dll
+	new file:   releases/AxiomRPG-linux64/System.Security.SecureString.dll
+	new file:   releases/AxiomRPG-linux64/System.Security.dll
+	new file:   releases/AxiomRPG-linux64/System.ServiceModel.Web.dll
+	new file:   releases/AxiomRPG-linux64/System.ServiceProcess.dll
+	new file:   releases/AxiomRPG-linux64/System.Text.Encoding.CodePages.dll
+	new file:   releases/AxiomRPG-linux64/System.Text.Encoding.Extensions.dll
+	new file:   releases/AxiomRPG-linux64/System.Text.Encoding.dll
+	new file:   releases/AxiomRPG-linux64/System.Text.Encodings.Web.dll
+	new file:   releases/AxiomRPG-linux64/System.Text.Json.dll
+	new file:   releases/AxiomRPG-linux64/System.Text.RegularExpressions.dll
+	new file:   releases/AxiomRPG-linux64/System.Threading.Channels.dll
+	new file:   releases/AxiomRPG-linux64/System.Threading.Overlapped.dll
+	new file:   releases/AxiomRPG-linux64/System.Threading.Tasks.Dataflow.dll
+	new file:   releases/AxiomRPG-linux64/System.Threading.Tasks.Extensions.dll
+	new file:   releases/AxiomRPG-linux64/System.Threading.Tasks.Parallel.dll
+	new file:   releases/AxiomRPG-linux64/System.Threading.Tasks.dll
+	new file:   releases/AxiomRPG-linux64/System.Threading.Thread.dll
+	new file:   releases/AxiomRPG-linux64/System.Threading.ThreadPool.dll
+	new file:   releases/AxiomRPG-linux64/System.Threading.Timer.dll
+	new file:   releases/AxiomRPG-linux64/System.Threading.dll
+	new file:   releases/AxiomRPG-linux64/System.Transactions.Local.dll
+	new file:   releases/AxiomRPG-linux64/System.Transactions.dll
+	new file:   releases/AxiomRPG-linux64/System.ValueTuple.dll
+	new file:   releases/AxiomRPG-linux64/System.Web.HttpUtility.dll
+	new file:   releases/AxiomRPG-linux64/System.Web.dll
+	new file:   releases/AxiomRPG-linux64/System.Windows.dll
+	new file:   releases/AxiomRPG-linux64/System.Xml.Linq.dll
+	new file:   releases/AxiomRPG-linux64/System.Xml.ReaderWriter.dll
+	new file:   releases/AxiomRPG-linux64/System.Xml.Serialization.dll
+	new file:   releases/AxiomRPG-linux64/System.Xml.XDocument.dll
+	new file:   releases/AxiomRPG-linux64/System.Xml.XPath.XDocument.dll
+	new file:   releases/AxiomRPG-linux64/System.Xml.XPath.dll
+	new file:   releases/AxiomRPG-linux64/System.Xml.XmlDocument.dll
+	new file:   releases/AxiomRPG-linux64/System.Xml.XmlSerializer.dll
+	new file:   releases/AxiomRPG-linux64/System.Xml.dll
+	new file:   releases/AxiomRPG-linux64/System.dll
+	new file:   releases/AxiomRPG-linux64/WindowsBase.dll
+	new file:   releases/AxiomRPG-linux64/createdump
+	new file:   releases/AxiomRPG-linux64/libSystem.Globalization.Native.so
+	new file:   releases/AxiomRPG-linux64/libSystem.IO.Compression.Native.so
+	new file:   releases/AxiomRPG-linux64/libSystem.Native.so
+	new file:   releases/AxiomRPG-linux64/libSystem.Net.Security.Native.so
+	new file:   releases/AxiomRPG-linux64/libSystem.Security.Cryptography.Native.OpenSsl.so
+	new file:   releases/AxiomRPG-linux64/libclrgc.so
+	new file:   releases/AxiomRPG-linux64/libclrjit.so
+	new file:   releases/AxiomRPG-linux64/libcoreclr.so
+	new file:   releases/AxiomRPG-linux64/libcoreclrtraceptprovider.so
+	new file:   releases/AxiomRPG-linux64/libhostfxr.so
+	new file:   releases/AxiomRPG-linux64/libhostpolicy.so
+	new file:   releases/AxiomRPG-linux64/libmscordaccore.so
+	new file:   releases/AxiomRPG-linux64/libmscordbi.so
+	new file:   releases/AxiomRPG-linux64/mscorlib.dll
+	new file:   releases/AxiomRPG-linux64/netstandard.dll
+	modified:   releases/AxiomRPG-win64.zip
+	new file:   releases/AxiomRPG-win64/AxiomRPG.AI.dll
+	modified:   releases/AxiomRPG-win64/AxiomRPG.AI.pdb
+	new file:   releases/AxiomRPG-win64/AxiomRPG.Core.dll
+	modified:   releases/AxiomRPG-win64/AxiomRPG.Core.pdb
+	new file:   releases/AxiomRPG-win64/AxiomRPG.Data.dll
+	modified:   releases/AxiomRPG-win64/AxiomRPG.Data.pdb
+	new file:   releases/AxiomRPG-win64/AxiomRPG.ECS.dll
+	modified:   releases/AxiomRPG-win64/AxiomRPG.ECS.pdb
+	new file:   releases/AxiomRPG-win64/AxiomRPG.Game.deps.json
+	new file:   releases/AxiomRPG-win64/AxiomRPG.Game.dll
+	modified:   releases/AxiomRPG-win64/AxiomRPG.Game.exe
+	modified:   releases/AxiomRPG-win64/AxiomRPG.Game.pdb
+	new file:   releases/AxiomRPG-win64/AxiomRPG.Game.runtimeconfig.json
+	new file:   releases/AxiomRPG-win64/AxiomRPG.Rendering.dll
+	modified:   releases/AxiomRPG-win64/AxiomRPG.Rendering.pdb
+	new file:   releases/AxiomRPG-win64/AxiomRPG.Simulation.dll
+	modified:   releases/AxiomRPG-win64/AxiomRPG.Simulation.pdb
+	new file:   releases/AxiomRPG-win64/AxiomRPG.ToolAPI.dll
+	modified:   releases/AxiomRPG-win64/AxiomRPG.ToolAPI.pdb
+	new file:   releases/AxiomRPG-win64/AxiomRPG.World.dll
+	modified:   releases/AxiomRPG-win64/AxiomRPG.World.pdb
+	new file:   releases/AxiomRPG-win64/Microsoft.CSharp.dll
+	new file:   releases/AxiomRPG-win64/Microsoft.DiaSymReader.Native.amd64.dll
+	new file:   releases/AxiomRPG-win64/Microsoft.Extensions.Configuration.Abstractions.dll
+	new file:   releases/AxiomRPG-win64/Microsoft.Extensions.Configuration.Binder.dll
+	new file:   releases/AxiomRPG-win64/Microsoft.Extensions.Configuration.dll
+	new file:   releases/AxiomRPG-win64/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+	new file:   releases/AxiomRPG-win64/Microsoft.Extensions.DependencyInjection.dll
+	new file:   releases/AxiomRPG-win64/Microsoft.Extensions.Logging.Abstractions.dll
+	new file:   releases/AxiomRPG-win64/Microsoft.Extensions.Logging.Configuration.dll
+	new file:   releases/AxiomRPG-win64/Microsoft.Extensions.Logging.Console.dll
+	new file:   releases/AxiomRPG-win64/Microsoft.Extensions.Logging.dll
+	new file:   releases/AxiomRPG-win64/Microsoft.Extensions.Options.ConfigurationExtensions.dll
+	new file:   releases/AxiomRPG-win64/Microsoft.Extensions.Options.dll
+	new file:   releases/AxiomRPG-win64/Microsoft.Extensions.Primitives.dll
+	new file:   releases/AxiomRPG-win64/Microsoft.VisualBasic.Core.dll
+	new file:   releases/AxiomRPG-win64/Microsoft.VisualBasic.dll
+	new file:   releases/AxiomRPG-win64/Microsoft.Win32.Primitives.dll
+	new file:   releases/AxiomRPG-win64/Microsoft.Win32.Registry.dll
+	new file:   releases/AxiomRPG-win64/System.AppContext.dll
+	new file:   releases/AxiomRPG-win64/System.Buffers.dll
+	new file:   releases/AxiomRPG-win64/System.Collections.Concurrent.dll
+	new file:   releases/AxiomRPG-win64/System.Collections.Immutable.dll
+	new file:   releases/AxiomRPG-win64/System.Collections.NonGeneric.dll
+	new file:   releases/AxiomRPG-win64/System.Collections.Specialized.dll
+	new file:   releases/AxiomRPG-win64/System.Collections.dll
+	new file:   releases/AxiomRPG-win64/System.ComponentModel.Annotations.dll
+	new file:   releases/AxiomRPG-win64/System.ComponentModel.DataAnnotations.dll
+	new file:   releases/AxiomRPG-win64/System.ComponentModel.EventBasedAsync.dll
+	new file:   releases/AxiomRPG-win64/System.ComponentModel.Primitives.dll
+	new file:   releases/AxiomRPG-win64/System.ComponentModel.TypeConverter.dll
+	new file:   releases/AxiomRPG-win64/System.ComponentModel.dll
+	new file:   releases/AxiomRPG-win64/System.Configuration.dll
+	new file:   releases/AxiomRPG-win64/System.Console.dll
+	new file:   releases/AxiomRPG-win64/System.Core.dll
+	new file:   releases/AxiomRPG-win64/System.Data.Common.dll
+	new file:   releases/AxiomRPG-win64/System.Data.DataSetExtensions.dll
+	new file:   releases/AxiomRPG-win64/System.Data.dll
+	new file:   releases/AxiomRPG-win64/System.Diagnostics.Contracts.dll
+	new file:   releases/AxiomRPG-win64/System.Diagnostics.Debug.dll
+	new file:   releases/AxiomRPG-win64/System.Diagnostics.DiagnosticSource.dll
+	new file:   releases/AxiomRPG-win64/System.Diagnostics.FileVersionInfo.dll
+	new file:   releases/AxiomRPG-win64/System.Diagnostics.Process.dll
+	new file:   releases/AxiomRPG-win64/System.Diagnostics.StackTrace.dll
+	new file:   releases/AxiomRPG-win64/System.Diagnostics.TextWriterTraceListener.dll
+	new file:   releases/AxiomRPG-win64/System.Diagnostics.Tools.dll
+	new file:   releases/AxiomRPG-win64/System.Diagnostics.TraceSource.dll
+	new file:   releases/AxiomRPG-win64/System.Diagnostics.Tracing.dll
+	new file:   releases/AxiomRPG-win64/System.Drawing.Primitives.dll
+	new file:   releases/AxiomRPG-win64/System.Drawing.dll
+	new file:   releases/AxiomRPG-win64/System.Dynamic.Runtime.dll
+	new file:   releases/AxiomRPG-win64/System.Formats.Asn1.dll
+	new file:   releases/AxiomRPG-win64/System.Formats.Tar.dll
+	new file:   releases/AxiomRPG-win64/System.Globalization.Calendars.dll
+	new file:   releases/AxiomRPG-win64/System.Globalization.Extensions.dll
+	new file:   releases/AxiomRPG-win64/System.Globalization.dll
+	new file:   releases/AxiomRPG-win64/System.IO.Compression.Brotli.dll
+	new file:   releases/AxiomRPG-win64/System.IO.Compression.FileSystem.dll
+	new file:   releases/AxiomRPG-win64/System.IO.Compression.Native.dll
+	new file:   releases/AxiomRPG-win64/System.IO.Compression.ZipFile.dll
+	new file:   releases/AxiomRPG-win64/System.IO.Compression.dll
+	new file:   releases/AxiomRPG-win64/System.IO.FileSystem.AccessControl.dll
+	new file:   releases/AxiomRPG-win64/System.IO.FileSystem.DriveInfo.dll
+	new file:   releases/AxiomRPG-win64/System.IO.FileSystem.Primitives.dll
+	new file:   releases/AxiomRPG-win64/System.IO.FileSystem.Watcher.dll
+	new file:   releases/AxiomRPG-win64/System.IO.FileSystem.dll
+	new file:   releases/AxiomRPG-win64/System.IO.IsolatedStorage.dll
+	new file:   releases/AxiomRPG-win64/System.IO.MemoryMappedFiles.dll
+	new file:   releases/AxiomRPG-win64/System.IO.Pipes.AccessControl.dll
+	new file:   releases/AxiomRPG-win64/System.IO.Pipes.dll
+	new file:   releases/AxiomRPG-win64/System.IO.UnmanagedMemoryStream.dll
+	new file:   releases/AxiomRPG-win64/System.IO.dll
+	new file:   releases/AxiomRPG-win64/System.Linq.Expressions.dll
+	new file:   releases/AxiomRPG-win64/System.Linq.Parallel.dll
+	new file:   releases/AxiomRPG-win64/System.Linq.Queryable.dll
+	new file:   releases/AxiomRPG-win64/System.Linq.dll
+	new file:   releases/AxiomRPG-win64/System.Memory.dll
+	new file:   releases/AxiomRPG-win64/System.Net.Http.Json.dll
+	new file:   releases/AxiomRPG-win64/System.Net.Http.dll
+	new file:   releases/AxiomRPG-win64/System.Net.HttpListener.dll
+	new file:   releases/AxiomRPG-win64/System.Net.Mail.dll
+	new file:   releases/AxiomRPG-win64/System.Net.NameResolution.dll
+	new file:   releases/AxiomRPG-win64/System.Net.NetworkInformation.dll
+	new file:   releases/AxiomRPG-win64/System.Net.Ping.dll
+	new file:   releases/AxiomRPG-win64/System.Net.Primitives.dll
+	new file:   releases/AxiomRPG-win64/System.Net.Quic.dll
+	new file:   releases/AxiomRPG-win64/System.Net.Requests.dll
+	new file:   releases/AxiomRPG-win64/System.Net.Security.dll
+	new file:   releases/AxiomRPG-win64/System.Net.ServicePoint.dll
+	new file:   releases/AxiomRPG-win64/System.Net.Sockets.dll
+	new file:   releases/AxiomRPG-win64/System.Net.WebClient.dll
+	new file:   releases/AxiomRPG-win64/System.Net.WebHeaderCollection.dll
+	new file:   releases/AxiomRPG-win64/System.Net.WebProxy.dll
+	new file:   releases/AxiomRPG-win64/System.Net.WebSockets.Client.dll
+	new file:   releases/AxiomRPG-win64/System.Net.WebSockets.dll
+	new file:   releases/AxiomRPG-win64/System.Net.dll
+	new file:   releases/AxiomRPG-win64/System.Numerics.Vectors.dll
+	new file:   releases/AxiomRPG-win64/System.Numerics.dll
+	new file:   releases/AxiomRPG-win64/System.ObjectModel.dll
+	new file:   releases/AxiomRPG-win64/System.Private.CoreLib.dll
+	new file:   releases/AxiomRPG-win64/System.Private.DataContractSerialization.dll
+	new file:   releases/AxiomRPG-win64/System.Private.Uri.dll
+	new file:   releases/AxiomRPG-win64/System.Private.Xml.Linq.dll
+	new file:   releases/AxiomRPG-win64/System.Private.Xml.dll
+	new file:   releases/AxiomRPG-win64/System.Reflection.DispatchProxy.dll
+	new file:   releases/AxiomRPG-win64/System.Reflection.Emit.ILGeneration.dll
+	new file:   releases/AxiomRPG-win64/System.Reflection.Emit.Lightweight.dll
+	new file:   releases/AxiomRPG-win64/System.Reflection.Emit.dll
+	new file:   releases/AxiomRPG-win64/System.Reflection.Extensions.dll
+	new file:   releases/AxiomRPG-win64/System.Reflection.Metadata.dll
+	new file:   releases/AxiomRPG-win64/System.Reflection.Primitives.dll
+	new file:   releases/AxiomRPG-win64/System.Reflection.TypeExtensions.dll
+	new file:   releases/AxiomRPG-win64/System.Reflection.dll
+	new file:   releases/AxiomRPG-win64/System.Resources.Reader.dll
+	new file:   releases/AxiomRPG-win64/System.Resources.ResourceManager.dll
+	new file:   releases/AxiomRPG-win64/System.Resources.Writer.dll
+	new file:   releases/AxiomRPG-win64/System.Runtime.CompilerServices.Unsafe.dll
+	new file:   releases/AxiomRPG-win64/System.Runtime.CompilerServices.VisualC.dll
+	new file:   releases/AxiomRPG-win64/System.Runtime.Extensions.dll
+	new file:   releases/AxiomRPG-win64/System.Runtime.Handles.dll
+	new file:   releases/AxiomRPG-win64/System.Runtime.InteropServices.JavaScript.dll
+	new file:   releases/AxiomRPG-win64/System.Runtime.InteropServices.RuntimeInformation.dll
+	new file:   releases/AxiomRPG-win64/System.Runtime.InteropServices.dll
+	new file:   releases/AxiomRPG-win64/System.Runtime.Intrinsics.dll
+	new file:   releases/AxiomRPG-win64/System.Runtime.Loader.dll
+	new file:   releases/AxiomRPG-win64/System.Runtime.Numerics.dll
+	new file:   releases/AxiomRPG-win64/System.Runtime.Serialization.Formatters.dll
+	new file:   releases/AxiomRPG-win64/System.Runtime.Serialization.Json.dll
+	new file:   releases/AxiomRPG-win64/System.Runtime.Serialization.Primitives.dll
+	new file:   releases/AxiomRPG-win64/System.Runtime.Serialization.Xml.dll
+	new file:   releases/AxiomRPG-win64/System.Runtime.Serialization.dll
+	new file:   releases/AxiomRPG-win64/System.Runtime.dll
+	new file:   releases/AxiomRPG-win64/System.Security.AccessControl.dll
+	new file:   releases/AxiomRPG-win64/System.Security.Claims.dll
+	new file:   releases/AxiomRPG-win64/System.Security.Cryptography.Algorithms.dll
+	new file:   releases/AxiomRPG-win64/System.Security.Cryptography.Cng.dll
+	new file:   releases/AxiomRPG-win64/System.Security.Cryptography.Csp.dll
+	new file:   releases/AxiomRPG-win64/System.Security.Cryptography.Encoding.dll
+	new file:   releases/AxiomRPG-win64/System.Security.Cryptography.OpenSsl.dll
+	new file:   releases/AxiomRPG-win64/System.Security.Cryptography.Primitives.dll
+	new file:   releases/AxiomRPG-win64/System.Security.Cryptography.X509Certificates.dll
+	new file:   releases/AxiomRPG-win64/System.Security.Cryptography.dll
+	new file:   releases/AxiomRPG-win64/System.Security.Principal.Windows.dll
+	new file:   releases/AxiomRPG-win64/System.Security.Principal.dll
+	new file:   releases/AxiomRPG-win64/System.Security.SecureString.dll
+	new file:   releases/AxiomRPG-win64/System.Security.dll
+	new file:   releases/AxiomRPG-win64/System.ServiceModel.Web.dll
+	new file:   releases/AxiomRPG-win64/System.ServiceProcess.dll
+	new file:   releases/AxiomRPG-win64/System.Text.Encoding.CodePages.dll
+	new file:   releases/AxiomRPG-win64/System.Text.Encoding.Extensions.dll
+	new file:   releases/AxiomRPG-win64/System.Text.Encoding.dll
+	new file:   releases/AxiomRPG-win64/System.Text.Encodings.Web.dll
+	new file:   releases/AxiomRPG-win64/System.Text.Json.dll
+	new file:   releases/AxiomRPG-win64/System.Text.RegularExpressions.dll
+	new file:   releases/AxiomRPG-win64/System.Threading.Channels.dll
+	new file:   releases/AxiomRPG-win64/System.Threading.Overlapped.dll
+	new file:   releases/AxiomRPG-win64/System.Threading.Tasks.Dataflow.dll
+	new file:   releases/AxiomRPG-win64/System.Threading.Tasks.Extensions.dll
+	new file:   releases/AxiomRPG-win64/System.Threading.Tasks.Parallel.dll
+	new file:   releases/AxiomRPG-win64/System.Threading.Tasks.dll
+	new file:   releases/AxiomRPG-win64/System.Threading.Thread.dll
+	new file:   releases/AxiomRPG-win64/System.Threading.ThreadPool.dll
+	new file:   releases/AxiomRPG-win64/System.Threading.Timer.dll
+	new file:   releases/AxiomRPG-win64/System.Threading.dll
+	new file:   releases/AxiomRPG-win64/System.Transactions.Local.dll
+	new file:   releases/AxiomRPG-win64/System.Transactions.dll
+	new file:   releases/AxiomRPG-win64/System.ValueTuple.dll
+	new file:   releases/AxiomRPG-win64/System.Web.HttpUtility.dll
+	new file:   releases/AxiomRPG-win64/System.Web.dll
+	new file:   releases/AxiomRPG-win64/System.Windows.dll
+	new file:   releases/AxiomRPG-win64/System.Xml.Linq.dll
+	new file:   releases/AxiomRPG-win64/System.Xml.ReaderWriter.dll
+	new file:   releases/AxiomRPG-win64/System.Xml.Serialization.dll
+	new file:   releases/AxiomRPG-win64/System.Xml.XDocument.dll
+	new file:   releases/AxiomRPG-win64/System.Xml.XPath.XDocument.dll
+	new file:   releases/AxiomRPG-win64/System.Xml.XPath.dll
+	new file:   releases/AxiomRPG-win64/System.Xml.XmlDocument.dll
+	new file:   releases/AxiomRPG-win64/System.Xml.XmlSerializer.dll
+	new file:   releases/AxiomRPG-win64/System.Xml.dll
+	new file:   releases/AxiomRPG-win64/System.dll
+	new file:   releases/AxiomRPG-win64/WindowsBase.dll
+	new file:   releases/AxiomRPG-win64/clretwrc.dll
+	new file:   releases/AxiomRPG-win64/clrgc.dll
+	new file:   releases/AxiomRPG-win64/clrjit.dll
+	new file:   releases/AxiomRPG-win64/coreclr.dll
+	new file:   releases/AxiomRPG-win64/createdump.exe
+	new file:   releases/AxiomRPG-win64/hostfxr.dll
+	new file:   releases/AxiomRPG-win64/hostpolicy.dll
+	new file:   releases/AxiomRPG-win64/mscordaccore.dll
+	new file:   releases/AxiomRPG-win64/mscordaccore_amd64_amd64_8.0.2826.26413.dll
+	new file:   releases/AxiomRPG-win64/mscordbi.dll
+	new file:   releases/AxiomRPG-win64/mscorlib.dll
+	new file:   releases/AxiomRPG-win64/mscorrc.dll
+	new file:   releases/AxiomRPG-win64/msquic.dll
+	new file:   releases/AxiomRPG-win64/netstandard.dll
+	modified:   src/AxiomRPG.AI/bin/Release/net8.0/AxiomRPG.AI.deps.json
+	modified:   src/AxiomRPG.AI/bin/Release/net8.0/AxiomRPG.AI.dll
+	modified:   src/AxiomRPG.AI/bin/Release/net8.0/AxiomRPG.AI.pdb
+	modified:   src/AxiomRPG.AI/bin/Release/net8.0/AxiomRPG.Core.dll
+	modified:   src/AxiomRPG.AI/bin/Release/net8.0/AxiomRPG.Core.pdb
+	modified:   src/AxiomRPG.AI/bin/Release/net8.0/AxiomRPG.Data.dll
+	modified:   src/AxiomRPG.AI/bin/Release/net8.0/AxiomRPG.Data.pdb
+	modified:   src/AxiomRPG.AI/bin/Release/net8.0/AxiomRPG.ECS.dll
+	modified:   src/AxiomRPG.AI/bin/Release/net8.0/AxiomRPG.ECS.pdb
+	modified:   src/AxiomRPG.AI/bin/Release/net8.0/AxiomRPG.ToolAPI.dll
+	modified:   src/AxiomRPG.AI/bin/Release/net8.0/AxiomRPG.ToolAPI.pdb
+	modified:   src/AxiomRPG.AI/bin/Release/net8.0/AxiomRPG.World.dll
+	modified:   src/AxiomRPG.AI/bin/Release/net8.0/AxiomRPG.World.pdb
+	modified:   src/AxiomRPG.AI/obj/AxiomRPG.AI.csproj.nuget.dgspec.json
+	modified:   src/AxiomRPG.AI/obj/AxiomRPG.AI.csproj.nuget.g.props
+	modified:   src/AxiomRPG.AI/obj/Release/net8.0/AxiomRPG.AI.AssemblyInfo.cs
+	modified:   src/AxiomRPG.AI/obj/Release/net8.0/AxiomRPG.AI.AssemblyInfoInputs.cache
+	modified:   src/AxiomRPG.AI/obj/Release/net8.0/AxiomRPG.AI.GeneratedMSBuildEditorConfig.editorconfig
+	modified:   src/AxiomRPG.AI/obj/Release/net8.0/AxiomRPG.AI.assets.cache
+	modified:   src/AxiomRPG.AI/obj/Release/net8.0/AxiomRPG.AI.csproj.AssemblyReference.cache
+	modified:   src/AxiomRPG.AI/obj/Release/net8.0/AxiomRPG.AI.dll
+	modified:   src/AxiomRPG.AI/obj/Release/net8.0/AxiomRPG.AI.pdb
+	modified:   src/AxiomRPG.AI/obj/Release/net8.0/ref/AxiomRPG.AI.dll
+	modified:   src/AxiomRPG.AI/obj/Release/net8.0/refint/AxiomRPG.AI.dll
+	modified:   src/AxiomRPG.AI/obj/project.assets.json
+	modified:   src/AxiomRPG.AI/obj/project.nuget.cache
+	modified:   src/AxiomRPG.Core/bin/Release/net8.0/AxiomRPG.Core.deps.json
+	modified:   src/AxiomRPG.Core/bin/Release/net8.0/AxiomRPG.Core.dll
+	modified:   src/AxiomRPG.Core/bin/Release/net8.0/AxiomRPG.Core.pdb
+	modified:   src/AxiomRPG.Core/obj/AxiomRPG.Core.csproj.nuget.dgspec.json
+	modified:   src/AxiomRPG.Core/obj/AxiomRPG.Core.csproj.nuget.g.props
+	modified:   src/AxiomRPG.Core/obj/Release/net8.0/AxiomRPG.Core.AssemblyInfo.cs
+	modified:   src/AxiomRPG.Core/obj/Release/net8.0/AxiomRPG.Core.AssemblyInfoInputs.cache
+	modified:   src/AxiomRPG.Core/obj/Release/net8.0/AxiomRPG.Core.GeneratedMSBuildEditorConfig.editorconfig
+	modified:   src/AxiomRPG.Core/obj/Release/net8.0/AxiomRPG.Core.assets.cache
+	modified:   src/AxiomRPG.Core/obj/Release/net8.0/AxiomRPG.Core.dll
+	modified:   src/AxiomRPG.Core/obj/Release/net8.0/AxiomRPG.Core.pdb
+	modified:   src/AxiomRPG.Core/obj/Release/net8.0/ref/AxiomRPG.Core.dll
+	modified:   src/AxiomRPG.Core/obj/Release/net8.0/refint/AxiomRPG.Core.dll
+	modified:   src/AxiomRPG.Core/obj/project.assets.json
+	modified:   src/AxiomRPG.Core/obj/project.nuget.cache
+	modified:   src/AxiomRPG.Data/bin/Release/net8.0/AxiomRPG.Core.dll
+	modified:   src/AxiomRPG.Data/bin/Release/net8.0/AxiomRPG.Core.pdb
+	modified:   src/AxiomRPG.Data/bin/Release/net8.0/AxiomRPG.Data.deps.json
+	modified:   src/AxiomRPG.Data/bin/Release/net8.0/AxiomRPG.Data.dll
+	modified:   src/AxiomRPG.Data/bin/Release/net8.0/AxiomRPG.Data.pdb
+	modified:   src/AxiomRPG.Data/bin/Release/net8.0/AxiomRPG.ECS.dll
+	modified:   src/AxiomRPG.Data/bin/Release/net8.0/AxiomRPG.ECS.pdb
+	modified:   src/AxiomRPG.Data/obj/AxiomRPG.Data.csproj.nuget.dgspec.json
+	modified:   src/AxiomRPG.Data/obj/AxiomRPG.Data.csproj.nuget.g.props
+	modified:   src/AxiomRPG.Data/obj/Release/net8.0/AxiomRPG.Data.AssemblyInfo.cs
+	modified:   src/AxiomRPG.Data/obj/Release/net8.0/AxiomRPG.Data.AssemblyInfoInputs.cache
+	modified:   src/AxiomRPG.Data/obj/Release/net8.0/AxiomRPG.Data.GeneratedMSBuildEditorConfig.editorconfig
+	modified:   src/AxiomRPG.Data/obj/Release/net8.0/AxiomRPG.Data.assets.cache
+	modified:   src/AxiomRPG.Data/obj/Release/net8.0/AxiomRPG.Data.csproj.AssemblyReference.cache
+	modified:   src/AxiomRPG.Data/obj/Release/net8.0/AxiomRPG.Data.dll
+	modified:   src/AxiomRPG.Data/obj/Release/net8.0/AxiomRPG.Data.pdb
+	modified:   src/AxiomRPG.Data/obj/Release/net8.0/ref/AxiomRPG.Data.dll
+	modified:   src/AxiomRPG.Data/obj/Release/net8.0/refint/AxiomRPG.Data.dll
+	modified:   src/AxiomRPG.Data/obj/project.assets.json
+	modified:   src/AxiomRPG.Data/obj/project.nuget.cache
+	modified:   src/AxiomRPG.ECS/bin/Release/net8.0/AxiomRPG.Core.dll
+	modified:   src/AxiomRPG.ECS/bin/Release/net8.0/AxiomRPG.Core.pdb
+	modified:   src/AxiomRPG.ECS/bin/Release/net8.0/AxiomRPG.ECS.deps.json
+	modified:   src/AxiomRPG.ECS/bin/Release/net8.0/AxiomRPG.ECS.dll
+	modified:   src/AxiomRPG.ECS/bin/Release/net8.0/AxiomRPG.ECS.pdb
+	modified:   src/AxiomRPG.ECS/obj/AxiomRPG.ECS.csproj.nuget.dgspec.json
+	modified:   src/AxiomRPG.ECS/obj/AxiomRPG.ECS.csproj.nuget.g.props
+	modified:   src/AxiomRPG.ECS/obj/Release/net8.0/AxiomRPG.ECS.AssemblyInfo.cs
+	modified:   src/AxiomRPG.ECS/obj/Release/net8.0/AxiomRPG.ECS.AssemblyInfoInputs.cache
+	modified:   src/AxiomRPG.ECS/obj/Release/net8.0/AxiomRPG.ECS.GeneratedMSBuildEditorConfig.editorconfig
+	modified:   src/AxiomRPG.ECS/obj/Release/net8.0/AxiomRPG.ECS.assets.cache
+	modified:   src/AxiomRPG.ECS/obj/Release/net8.0/AxiomRPG.ECS.csproj.AssemblyReference.cache
+	modified:   src/AxiomRPG.ECS/obj/Release/net8.0/AxiomRPG.ECS.dll
+	modified:   src/AxiomRPG.ECS/obj/Release/net8.0/AxiomRPG.ECS.pdb
+	modified:   src/AxiomRPG.ECS/obj/Release/net8.0/ref/AxiomRPG.ECS.dll
+	modified:   src/AxiomRPG.ECS/obj/Release/net8.0/refint/AxiomRPG.ECS.dll
+	modified:   src/AxiomRPG.ECS/obj/project.assets.json
+	modified:   src/AxiomRPG.ECS/obj/project.nuget.cache
+	modified:   src/AxiomRPG.Game/bin/Release/net8.0/linux-x64/AxiomRPG.AI.dll
+	modified:   src/AxiomRPG.Game/bin/Release/net8.0/linux-x64/AxiomRPG.AI.pdb
+	modified:   src/AxiomRPG.Game/bin/Release/net8.0/linux-x64/AxiomRPG.Core.dll
+	modified:   src/AxiomRPG.Game/bin/Release/net8.0/linux-x64/AxiomRPG.Core.pdb
+	modified:   src/AxiomRPG.Game/bin/Release/net8.0/linux-x64/AxiomRPG.Data.dll
+	modified:   src/AxiomRPG.Game/bin/Release/net8.0/linux-x64/AxiomRPG.Data.pdb
+	modified:   src/AxiomRPG.Game/bin/Release/net8.0/linux-x64/AxiomRPG.ECS.dll
+	modified:   src/AxiomRPG.Game/bin/Release/net8.0/linux-x64/AxiomRPG.ECS.pdb
+	modified:   src/AxiomRPG.Game/bin/Release/net8.0/linux-x64/AxiomRPG.Game
+	modified:   src/AxiomRPG.Game/bin/Release/net8.0/linux-x64/AxiomRPG.Game.deps.json
+	modified:   src/AxiomRPG.Game/bin/Release/net8.0/linux-x64/AxiomRPG.Game.dll
+	modified:   src/AxiomRPG.Game/bin/Release/net8.0/linux-x64/AxiomRPG.Game.pdb
+	modified:   src/AxiomRPG.Game/bin/Release/net8.0/linux-x64/AxiomRPG.Rendering.dll
+	modified:   src/AxiomRPG.Game/bin/Release/net8.0/linux-x64/AxiomRPG.Rendering.pdb
+	modified:   src/AxiomRPG.Game/bin/Release/net8.0/linux-x64/AxiomRPG.Simulation.dll
+	modified:   src/AxiomRPG.Game/bin/Release/net8.0/linux-x64/AxiomRPG.Simulation.pdb
+	modified:   src/AxiomRPG.Game/bin/Release/net8.0/linux-x64/AxiomRPG.ToolAPI.dll
+	modified:   src/AxiomRPG.Game/bin/Release/net8.0/linux-x64/AxiomRPG.ToolAPI.pdb
+	modified:   src/AxiomRPG.Game/bin/Release/net8.0/linux-x64/AxiomRPG.World.dll
+	modified:   src/AxiomRPG.Game/bin/Release/net8.0/linux-x64/AxiomRPG.World.pdb
+	modified:   src/AxiomRPG.Game/bin/Release/net8.0/win-x64/AxiomRPG.AI.dll
+	modified:   src/AxiomRPG.Game/bin/Release/net8.0/win-x64/AxiomRPG.AI.pdb
+	modified:   src/AxiomRPG.Game/bin/Release/net8.0/win-x64/AxiomRPG.Core.dll
+	modified:   src/AxiomRPG.Game/bin/Release/net8.0/win-x64/AxiomRPG.Core.pdb
+	modified:   src/AxiomRPG.Game/bin/Release/net8.0/win-x64/AxiomRPG.Data.dll
+	modified:   src/AxiomRPG.Game/bin/Release/net8.0/win-x64/AxiomRPG.Data.pdb
+	modified:   src/AxiomRPG.Game/bin/Release/net8.0/win-x64/AxiomRPG.ECS.dll
+	modified:   src/AxiomRPG.Game/bin/Release/net8.0/win-x64/AxiomRPG.ECS.pdb
+	modified:   src/AxiomRPG.Game/bin/Release/net8.0/win-x64/AxiomRPG.Game.deps.json
+	modified:   src/AxiomRPG.Game/bin/Release/net8.0/win-x64/AxiomRPG.Game.dll
+	modified:   src/AxiomRPG.Game/bin/Release/net8.0/win-x64/AxiomRPG.Game.exe
+	modified:   src/AxiomRPG.Game/bin/Release/net8.0/win-x64/AxiomRPG.Game.pdb
+	modified:   src/AxiomRPG.Game/bin/Release/net8.0/win-x64/AxiomRPG.Rendering.dll
+	modified:   src/AxiomRPG.Game/bin/Release/net8.0/win-x64/AxiomRPG.Rendering.pdb
+	modified:   src/AxiomRPG.Game/bin/Release/net8.0/win-x64/AxiomRPG.Simulation.dll
+	modified:   src/AxiomRPG.Game/bin/Release/net8.0/win-x64/AxiomRPG.Simulation.pdb
+	modified:   src/AxiomRPG.Game/bin/Release/net8.0/win-x64/AxiomRPG.ToolAPI.dll
+	modified:   src/AxiomRPG.Game/bin/Release/net8.0/win-x64/AxiomRPG.ToolAPI.pdb
+	modified:   src/AxiomRPG.Game/bin/Release/net8.0/win-x64/AxiomRPG.World.dll
+	modified:   src/AxiomRPG.Game/bin/Release/net8.0/win-x64/AxiomRPG.World.pdb
+	modified:   src/AxiomRPG.Game/obj/AxiomRPG.Game.csproj.nuget.dgspec.json
+	modified:   src/AxiomRPG.Game/obj/AxiomRPG.Game.csproj.nuget.g.props
+	modified:   src/AxiomRPG.Game/obj/Release/net8.0/linux-x64/AxiomRPG.Game.AssemblyInfo.cs
+	modified:   src/AxiomRPG.Game/obj/Release/net8.0/linux-x64/AxiomRPG.Game.AssemblyInfoInputs.cache
+	modified:   src/AxiomRPG.Game/obj/Release/net8.0/linux-x64/AxiomRPG.Game.GeneratedMSBuildEditorConfig.editorconfig
+	modified:   src/AxiomRPG.Game/obj/Release/net8.0/linux-x64/AxiomRPG.Game.assets.cache
+	modified:   src/AxiomRPG.Game/obj/Release/net8.0/linux-x64/AxiomRPG.Game.csproj.AssemblyReference.cache
+	modified:   src/AxiomRPG.Game/obj/Release/net8.0/linux-x64/AxiomRPG.Game.dll
+	modified:   src/AxiomRPG.Game/obj/Release/net8.0/linux-x64/AxiomRPG.Game.pdb
+	modified:   src/AxiomRPG.Game/obj/Release/net8.0/linux-x64/PublishOutputs.0a6b33c2f0.txt
+	new file:   src/AxiomRPG.Game/obj/Release/net8.0/linux-x64/apphost
+	modified:   src/AxiomRPG.Game/obj/Release/net8.0/linux-x64/ref/AxiomRPG.Game.dll
+	modified:   src/AxiomRPG.Game/obj/Release/net8.0/linux-x64/refint/AxiomRPG.Game.dll
+	modified:   src/AxiomRPG.Game/obj/Release/net8.0/win-x64/AxiomRPG.Game.AssemblyInfo.cs
+	modified:   src/AxiomRPG.Game/obj/Release/net8.0/win-x64/AxiomRPG.Game.AssemblyInfoInputs.cache
+	modified:   src/AxiomRPG.Game/obj/Release/net8.0/win-x64/AxiomRPG.Game.GeneratedMSBuildEditorConfig.editorconfig
+	modified:   src/AxiomRPG.Game/obj/Release/net8.0/win-x64/AxiomRPG.Game.assets.cache
+	modified:   src/AxiomRPG.Game/obj/Release/net8.0/win-x64/AxiomRPG.Game.csproj.AssemblyReference.cache
+	modified:   src/AxiomRPG.Game/obj/Release/net8.0/win-x64/AxiomRPG.Game.dll
+	modified:   src/AxiomRPG.Game/obj/Release/net8.0/win-x64/AxiomRPG.Game.pdb
+	modified:   src/AxiomRPG.Game/obj/Release/net8.0/win-x64/PublishOutputs.4549c63ae3.txt
+	new file:   src/AxiomRPG.Game/obj/Release/net8.0/win-x64/apphost.exe
+	modified:   src/AxiomRPG.Game/obj/Release/net8.0/win-x64/ref/AxiomRPG.Game.dll
+	modified:   src/AxiomRPG.Game/obj/Release/net8.0/win-x64/refint/AxiomRPG.Game.dll
+	modified:   src/AxiomRPG.Game/obj/project.assets.json
+	modified:   src/AxiomRPG.Game/obj/project.nuget.cache
+	modified:   src/AxiomRPG.Rendering/bin/Release/net8.0/AxiomRPG.Core.dll
+	modified:   src/AxiomRPG.Rendering/bin/Release/net8.0/AxiomRPG.Core.pdb
+	modified:   src/AxiomRPG.Rendering/bin/Release/net8.0/AxiomRPG.Data.dll
+	modified:   src/AxiomRPG.Rendering/bin/Release/net8.0/AxiomRPG.Data.pdb
+	modified:   src/AxiomRPG.Rendering/bin/Release/net8.0/AxiomRPG.ECS.dll
+	modified:   src/AxiomRPG.Rendering/bin/Release/net8.0/AxiomRPG.ECS.pdb
+	modified:   src/AxiomRPG.Rendering/bin/Release/net8.0/AxiomRPG.Rendering.deps.json
+	modified:   src/AxiomRPG.Rendering/bin/Release/net8.0/AxiomRPG.Rendering.dll
+	modified:   src/AxiomRPG.Rendering/bin/Release/net8.0/AxiomRPG.Rendering.pdb
+	modified:   src/AxiomRPG.Rendering/bin/Release/net8.0/AxiomRPG.World.dll
+	modified:   src/AxiomRPG.Rendering/bin/Release/net8.0/AxiomRPG.World.pdb
+	modified:   src/AxiomRPG.Rendering/obj/AxiomRPG.Rendering.csproj.nuget.dgspec.json
+	modified:   src/AxiomRPG.Rendering/obj/AxiomRPG.Rendering.csproj.nuget.g.props
+	modified:   src/AxiomRPG.Rendering/obj/Release/net8.0/AxiomRPG.Rendering.AssemblyInfo.cs
+	modified:   src/AxiomRPG.Rendering/obj/Release/net8.0/AxiomRPG.Rendering.AssemblyInfoInputs.cache
+	modified:   src/AxiomRPG.Rendering/obj/Release/net8.0/AxiomRPG.Rendering.GeneratedMSBuildEditorConfig.editorconfig
+	modified:   src/AxiomRPG.Rendering/obj/Release/net8.0/AxiomRPG.Rendering.assets.cache
+	modified:   src/AxiomRPG.Rendering/obj/Release/net8.0/AxiomRPG.Rendering.csproj.AssemblyReference.cache
+	modified:   src/AxiomRPG.Rendering/obj/Release/net8.0/AxiomRPG.Rendering.dll
+	modified:   src/AxiomRPG.Rendering/obj/Release/net8.0/AxiomRPG.Rendering.pdb
+	modified:   src/AxiomRPG.Rendering/obj/Release/net8.0/ref/AxiomRPG.Rendering.dll
+	modified:   src/AxiomRPG.Rendering/obj/Release/net8.0/refint/AxiomRPG.Rendering.dll
+	modified:   src/AxiomRPG.Rendering/obj/project.assets.json
+	modified:   src/AxiomRPG.Rendering/obj/project.nuget.cache
+	modified:   src/AxiomRPG.Simulation/bin/Release/net8.0/AxiomRPG.Core.dll
+	modified:   src/AxiomRPG.Simulation/bin/Release/net8.0/AxiomRPG.Core.pdb
+	modified:   src/AxiomRPG.Simulation/bin/Release/net8.0/AxiomRPG.Data.dll
+	modified:   src/AxiomRPG.Simulation/bin/Release/net8.0/AxiomRPG.Data.pdb
+	modified:   src/AxiomRPG.Simulation/bin/Release/net8.0/AxiomRPG.ECS.dll
+	modified:   src/AxiomRPG.Simulation/bin/Release/net8.0/AxiomRPG.ECS.pdb
+	modified:   src/AxiomRPG.Simulation/bin/Release/net8.0/AxiomRPG.Simulation.deps.json
+	modified:   src/AxiomRPG.Simulation/bin/Release/net8.0/AxiomRPG.Simulation.dll
+	modified:   src/AxiomRPG.Simulation/bin/Release/net8.0/AxiomRPG.Simulation.pdb
+	modified:   src/AxiomRPG.Simulation/bin/Release/net8.0/AxiomRPG.World.dll
+	modified:   src/AxiomRPG.Simulation/bin/Release/net8.0/AxiomRPG.World.pdb
+	modified:   src/AxiomRPG.Simulation/obj/AxiomRPG.Simulation.csproj.nuget.dgspec.json
+	modified:   src/AxiomRPG.Simulation/obj/AxiomRPG.Simulation.csproj.nuget.g.props
+	modified:   src/AxiomRPG.Simulation/obj/Release/net8.0/AxiomRPG.Simulation.AssemblyInfo.cs
+	modified:   src/AxiomRPG.Simulation/obj/Release/net8.0/AxiomRPG.Simulation.AssemblyInfoInputs.cache
+	modified:   src/AxiomRPG.Simulation/obj/Release/net8.0/AxiomRPG.Simulation.GeneratedMSBuildEditorConfig.editorconfig
+	modified:   src/AxiomRPG.Simulation/obj/Release/net8.0/AxiomRPG.Simulation.assets.cache
+	modified:   src/AxiomRPG.Simulation/obj/Release/net8.0/AxiomRPG.Simulation.csproj.AssemblyReference.cache
+	modified:   src/AxiomRPG.Simulation/obj/Release/net8.0/AxiomRPG.Simulation.dll
+	modified:   src/AxiomRPG.Simulation/obj/Release/net8.0/AxiomRPG.Simulation.pdb
+	modified:   src/AxiomRPG.Simulation/obj/Release/net8.0/ref/AxiomRPG.Simulation.dll
+	modified:   src/AxiomRPG.Simulation/obj/Release/net8.0/refint/AxiomRPG.Simulation.dll
+	modified:   src/AxiomRPG.Simulation/obj/project.assets.json
+	modified:   src/AxiomRPG.Simulation/obj/project.nuget.cache
+	modified:   src/AxiomRPG.ToolAPI/bin/Release/net8.0/AxiomRPG.Core.dll
+	modified:   src/AxiomRPG.ToolAPI/bin/Release/net8.0/AxiomRPG.Core.pdb
+	modified:   src/AxiomRPG.ToolAPI/bin/Release/net8.0/AxiomRPG.Data.dll
+	modified:   src/AxiomRPG.ToolAPI/bin/Release/net8.0/AxiomRPG.Data.pdb
+	modified:   src/AxiomRPG.ToolAPI/bin/Release/net8.0/AxiomRPG.ECS.dll
+	modified:   src/AxiomRPG.ToolAPI/bin/Release/net8.0/AxiomRPG.ECS.pdb
+	modified:   src/AxiomRPG.ToolAPI/bin/Release/net8.0/AxiomRPG.ToolAPI.deps.json
+	modified:   src/AxiomRPG.ToolAPI/bin/Release/net8.0/AxiomRPG.ToolAPI.dll
+	modified:   src/AxiomRPG.ToolAPI/bin/Release/net8.0/AxiomRPG.ToolAPI.pdb
+	modified:   src/AxiomRPG.ToolAPI/bin/Release/net8.0/AxiomRPG.World.dll
+	modified:   src/AxiomRPG.ToolAPI/bin/Release/net8.0/AxiomRPG.World.pdb
+	modified:   src/AxiomRPG.ToolAPI/obj/AxiomRPG.ToolAPI.csproj.nuget.dgspec.json
+	modified:   src/AxiomRPG.ToolAPI/obj/AxiomRPG.ToolAPI.csproj.nuget.g.props
+	modified:   src/AxiomRPG.ToolAPI/obj/Release/net8.0/AxiomRPG.ToolAPI.AssemblyInfo.cs
+	modified:   src/AxiomRPG.ToolAPI/obj/Release/net8.0/AxiomRPG.ToolAPI.AssemblyInfoInputs.cache
+	modified:   src/AxiomRPG.ToolAPI/obj/Release/net8.0/AxiomRPG.ToolAPI.GeneratedMSBuildEditorConfig.editorconfig
+	modified:   src/AxiomRPG.ToolAPI/obj/Release/net8.0/AxiomRPG.ToolAPI.assets.cache
+	modified:   src/AxiomRPG.ToolAPI/obj/Release/net8.0/AxiomRPG.ToolAPI.csproj.AssemblyReference.cache
+	modified:   src/AxiomRPG.ToolAPI/obj/Release/net8.0/AxiomRPG.ToolAPI.dll
+	modified:   src/AxiomRPG.ToolAPI/obj/Release/net8.0/AxiomRPG.ToolAPI.pdb
+	modified:   src/AxiomRPG.ToolAPI/obj/Release/net8.0/ref/AxiomRPG.ToolAPI.dll
+	modified:   src/AxiomRPG.ToolAPI/obj/Release/net8.0/refint/AxiomRPG.ToolAPI.dll
+	modified:   src/AxiomRPG.ToolAPI/obj/project.assets.json
+	modified:   src/AxiomRPG.ToolAPI/obj/project.nuget.cache
+	modified:   src/AxiomRPG.World/bin/Release/net8.0/AxiomRPG.Core.dll
+	modified:   src/AxiomRPG.World/bin/Release/net8.0/AxiomRPG.Core.pdb
+	modified:   src/AxiomRPG.World/bin/Release/net8.0/AxiomRPG.Data.dll
+	modified:   src/AxiomRPG.World/bin/Release/net8.0/AxiomRPG.Data.pdb
+	modified:   src/AxiomRPG.World/bin/Release/net8.0/AxiomRPG.ECS.dll
+	modified:   src/AxiomRPG.World/bin/Release/net8.0/AxiomRPG.ECS.pdb
+	modified:   src/AxiomRPG.World/bin/Release/net8.0/AxiomRPG.World.deps.json
+	modified:   src/AxiomRPG.World/bin/Release/net8.0/AxiomRPG.World.dll
+	modified:   src/AxiomRPG.World/bin/Release/net8.0/AxiomRPG.World.pdb
+	modified:   src/AxiomRPG.World/obj/AxiomRPG.World.csproj.nuget.dgspec.json
+	modified:   src/AxiomRPG.World/obj/AxiomRPG.World.csproj.nuget.g.props
+	modified:   src/AxiomRPG.World/obj/Release/net8.0/AxiomRPG.World.AssemblyInfo.cs
+	modified:   src/AxiomRPG.World/obj/Release/net8.0/AxiomRPG.World.AssemblyInfoInputs.cache
+	modified:   src/AxiomRPG.World/obj/Release/net8.0/AxiomRPG.World.GeneratedMSBuildEditorConfig.editorconfig
+	modified:   src/AxiomRPG.World/obj/Release/net8.0/AxiomRPG.World.assets.cache
+	modified:   src/AxiomRPG.World/obj/Release/net8.0/AxiomRPG.World.csproj.AssemblyReference.cache
+	modified:   src/AxiomRPG.World/obj/Release/net8.0/AxiomRPG.World.dll
+	modified:   src/AxiomRPG.World/obj/Release/net8.0/AxiomRPG.World.pdb
+	modified:   src/AxiomRPG.World/obj/Release/net8.0/ref/AxiomRPG.World.dll
+	modified:   src/AxiomRPG.World/obj/Release/net8.0/refint/AxiomRPG.World.dll
+	modified:   src/AxiomRPG.World/obj/project.assets.json
+	modified:   src/AxiomRPG.World/obj/project.nuget.cache

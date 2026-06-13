@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AxiomRPG.Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+34afb27fa09a7e6025122d824a23f2071770671f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6845baeb702575e24e706a98564436761d4079cd")]
 [assembly: System.Reflection.AssemblyProductAttribute("AxiomRPG.Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AxiomRPG.Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

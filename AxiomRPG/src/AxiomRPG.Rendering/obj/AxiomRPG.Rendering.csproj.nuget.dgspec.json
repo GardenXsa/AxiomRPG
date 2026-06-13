@@ -48,12 +48,6 @@
               "target": "Package",
               "version": "[8.0.2, )"
             },
-            "Microsoft.NET.ILLink.Tasks": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[8.0.28, )",
-              "autoReferenced": true
-            },
             "System.Text.Json": {
               "target": "Package",
               "version": "[8.0.5, )"
@@ -149,12 +143,6 @@
               "target": "Package",
               "version": "[8.0.2, )"
             },
-            "Microsoft.NET.ILLink.Tasks": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[8.0.28, )",
-              "autoReferenced": true
-            },
             "System.Text.Json": {
               "target": "Package",
               "version": "[8.0.5, )"
@@ -239,12 +227,6 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
-            "Microsoft.NET.ILLink.Tasks": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[8.0.28, )",
-              "autoReferenced": true
-            },
             "System.Text.Json": {
               "target": "Package",
               "version": "[8.0.5, )"
@@ -342,12 +324,6 @@
             "Microsoft.Extensions.Logging.Abstractions": {
               "target": "Package",
               "version": "[8.0.2, )"
-            },
-            "Microsoft.NET.ILLink.Tasks": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[8.0.28, )",
-              "autoReferenced": true
             }
           },
           "imports": [
@@ -438,12 +414,6 @@
             "Microsoft.Extensions.Logging.Abstractions": {
               "target": "Package",
               "version": "[8.0.2, )"
-            },
-            "Microsoft.NET.ILLink.Tasks": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[8.0.28, )",
-              "autoReferenced": true
             }
           },
           "imports": [

@@ -1,0 +1,7 @@
+# Unpacked release directories (use zip files instead)
+releases/AxiomRPG-linux64/
+releases/AxiomRPG-win64/
+
+# Build artifacts
+**/bin/
+**/obj/
