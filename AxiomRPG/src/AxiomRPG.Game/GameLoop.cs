@@ -476,7 +476,6 @@ public class GameLoop
         // Initialize Game Master for the player
         var gameMaster = _agentOrchestrator.CreateGameMaster();
         await gameMaster.StartAsync(ct);
-        var gmReady = false;
         var gmText = new StringBuilder();
         var gmStreaming = false;
 
@@ -503,7 +502,6 @@ public class GameLoop
                         _gameState.AddMessage($"GM: {evt.Content}");
                     }
                 }
-                gmReady = true;
                 gmStreaming = false;
             }
             catch (Exception ex)
@@ -511,9 +509,8 @@ public class GameLoop
                 _logger.LogError(ex, "GM initialization failed");
                 lock (gmText)
                 {
-                    gmText.Append($"\n[GM Error: {ex.Message}]");
+                    gmText.Append('\n').Append("[GM Error: ").Append(ex.Message).Append(']');
                 }
-                gmReady = true;
                 gmStreaming = false;
             }
         }, ct);

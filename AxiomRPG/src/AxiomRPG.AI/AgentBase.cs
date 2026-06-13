@@ -229,6 +229,7 @@ public abstract class AgentBase : IAgent
             {
                 Logger.LogInformation("Agent {Type} calling tool: {Tool} (round {Round})", AgentType, acc.ToolName, round);
 
+                StreamEvent toolEvent;
                 try
                 {
                     var result = await ToolDispatcher.DispatchAsync(new ToolCall(acc.CallId, acc.ToolName, acc.Arguments));
@@ -241,7 +242,7 @@ public abstract class AgentBase : IAgent
                     ConversationHistory.Add(LLMMessage.ToolResult(acc.CallId, resultObj));
 
                     var statusStr = result.Success ? "OK" : "FAILED";
-                    yield return new StreamEvent(StreamEventType.ToolCallResult,
+                    toolEvent = new StreamEvent(StreamEventType.ToolCallResult,
                         $"{acc.ToolName}: {result.Message}",
                         statusStr);
                 }
@@ -251,10 +252,11 @@ public abstract class AgentBase : IAgent
                     var errorObj = new JsonObject { ["success"] = false, ["message"] = ex.Message };
                     ConversationHistory.Add(LLMMessage.ToolResult(acc.CallId, errorObj));
 
-                    yield return new StreamEvent(StreamEventType.ToolCallResult,
+                    toolEvent = new StreamEvent(StreamEventType.ToolCallResult,
                         $"{acc.ToolName}: ERROR - {ex.Message}",
                         "ERROR");
                 }
+                yield return toolEvent;
             }
 
             yield return new StreamEvent(StreamEventType.RoundComplete, $"Round {round} complete ({completedToolCalls.Count} tool calls)");
