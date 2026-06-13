@@ -1,0 +1,10 @@
+/home/z/my-project/AxiomRPG/releases/AxiomRPG-win64/AxiomRPG.Game.pdb
+/home/z/my-project/AxiomRPG/releases/AxiomRPG-win64/AxiomRPG.Core.pdb
+/home/z/my-project/AxiomRPG/releases/AxiomRPG-win64/AxiomRPG.ECS.pdb
+/home/z/my-project/AxiomRPG/releases/AxiomRPG-win64/AxiomRPG.Data.pdb
+/home/z/my-project/AxiomRPG/releases/AxiomRPG-win64/AxiomRPG.World.pdb
+/home/z/my-project/AxiomRPG/releases/AxiomRPG-win64/AxiomRPG.ToolAPI.pdb
+/home/z/my-project/AxiomRPG/releases/AxiomRPG-win64/AxiomRPG.AI.pdb
+/home/z/my-project/AxiomRPG/releases/AxiomRPG-win64/AxiomRPG.Simulation.pdb
+/home/z/my-project/AxiomRPG/releases/AxiomRPG-win64/AxiomRPG.Rendering.pdb
+/home/z/my-project/AxiomRPG/releases/AxiomRPG-win64/AxiomRPG.Game.exe

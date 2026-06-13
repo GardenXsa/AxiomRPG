@@ -1,0 +1,22 @@
+{
+  "id": "rusty_sword",
+  "name": "Rusty Sword",
+  "description": "A weathered iron sword, its edge dull and spotted with rust. Better than bare fists, but not by much. It creaks when swung.",
+  "itemType": "weapon",
+  "asciiChar": "/",
+  "foregroundColor": "#CD853F",
+  "weight": 2.5,
+  "value": 5,
+  "isStackable": false,
+  "maxStack": 1,
+  "effects": {
+    "damage_slashing": 4,
+    "parry_chance": 5
+  },
+  "properties": {
+    "weapon_class": "one_handed",
+    "required_str": 6,
+    "durability": "low",
+    "quality": "poor"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ItemDefinition",
+  "description": "Defines an item type in the game world.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "itemType": { "type": "string", "enum": ["weapon", "armor", "consumable", "misc", "quest_item", "ammo", "tool", "book", "food", "drink"] },
+    "asciiChar": { "type": "string", "maxLength": 1 },
+    "foregroundColor": { "type": "string" },
+    "weight": { "type": "number", "minimum": 0 },
+    "value": { "type": "number", "minimum": 0 },
+    "isStackable": { "type": "boolean" },
+    "maxStack": { "type": "integer", "minimum": 1 },
+    "effects": { "type": "object", "additionalProperties": { "type": "number" }, "description": "Effect name to value mapping (damage, heal, buff, etc.)" },
+    "properties": { "type": "object", "additionalProperties": { "type": "string" } }
+  },
+  "required": ["id", "name", "itemType"]
+}

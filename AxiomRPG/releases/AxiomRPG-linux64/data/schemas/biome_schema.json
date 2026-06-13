@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "BiomeDefinition",
+  "description": "Defines a biome type in the world. Biomes determine terrain, flora, fauna, and weather.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "description": "Unique biome identifier" },
+    "name": { "type": "string", "description": "Display name" },
+    "description": { "type": "string", "description": "Detailed biome description" },
+    "defaultTile": { "type": "string", "description": "Default tile type for this biome" },
+    "tileWeights": { "type": "object", "additionalProperties": { "type": "number" }, "description": "Tile type to weight mapping for procedural generation" },
+    "flora": { "type": "array", "items": { "type": "string" }, "description": "Plant types found in this biome" },
+    "fauna": { "type": "array", "items": { "type": "string" }, "description": "Animal types found in this biome" },
+    "weatherRules": { "type": "string", "description": "Weather pattern identifier" },
+    "temperatureMin": { "type": "number", "description": "Minimum temperature in Celsius" },
+    "temperatureMax": { "type": "number", "description": "Maximum temperature in Celsius" },
+    "rainfall": { "type": "number", "description": "Average rainfall level (0-1)" },
+    "allowedStructures": { "type": "array", "items": { "type": "string" }, "description": "Structure types that can appear in this biome" },
+    "properties": { "type": "object", "additionalProperties": { "type": "string" }, "description": "Additional custom properties" }
+  },
+  "required": ["id", "name", "description"]
+}

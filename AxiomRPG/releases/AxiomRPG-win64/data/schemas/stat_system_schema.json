@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "StatSystemDefinition",
+  "description": "Defines the stat system for the world. AI creates this during world building. ALL entities use this same system.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string" },
+    "name": { "type": "string" },
+    "stats": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string", "description": "Internal stat name (lowercase)" },
+          "displayName": { "type": "string", "description": "User-visible name" },
+          "description": { "type": "string" },
+          "minValue": { "type": "number" },
+          "maxValue": { "type": "number" },
+          "defaultValue": { "type": "number" },
+          "category": { "type": "string", "description": "physical, mental, social, combat, survival, etc." }
+        },
+        "required": ["name", "displayName", "minValue", "maxValue", "defaultValue"]
+      }
+    },
+    "customIndicators": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "displayName": { "type": "string" },
+          "description": { "type": "string" },
+          "minValue": { "type": "number" },
+          "maxValue": { "type": "number" },
+          "defaultValue": { "type": "number" },
+          "decayRate": { "type": "string", "description": "How fast this indicator decays naturally" },
+          "affectedBy": { "type": "string", "description": "What events affect this indicator" }
+        },
+        "required": ["name", "displayName", "minValue", "maxValue", "defaultValue"]
+      }
+    },
+    "derivedStats": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "displayName": { "type": "string" },
+          "formula": { "type": "string", "description": "Math expression referencing other stats" },
+          "dependencies": { "type": "array", "items": { "type": "string" }, "description": "Stat names this formula depends on" }
+        },
+        "required": ["name", "displayName", "formula", "dependencies"]
+      }
+    },
+    "properties": { "type": "object", "additionalProperties": { "type": "string" } }
+  },
+  "required": ["id", "name", "stats"]
+}

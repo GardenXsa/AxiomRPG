@@ -1,11 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "WbIbujNhCw4=",
+  "dgSpecHash": "YyuDdPFeo08=",
   "success": true,
   "projectFilePath": "/home/z/my-project/AxiomRPG/src/AxiomRPG.Core/AxiomRPG.Core.csproj",
   "expectedPackageFiles": [
     "/home/z/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.2/microsoft.extensions.dependencyinjection.abstractions.8.0.2.nupkg.sha512",
-    "/home/z/.nuget/packages/system.text.json/8.0.5/system.text.json.8.0.5.nupkg.sha512"
+    "/home/z/.nuget/packages/microsoft.net.illink.tasks/8.0.28/microsoft.net.illink.tasks.8.0.28.nupkg.sha512",
+    "/home/z/.nuget/packages/system.text.json/8.0.5/system.text.json.8.0.5.nupkg.sha512",
+    "/home/z/.nuget/packages/microsoft.netcore.app.runtime.linux-x64/8.0.28/microsoft.netcore.app.runtime.linux-x64.8.0.28.nupkg.sha512",
+    "/home/z/.nuget/packages/microsoft.aspnetcore.app.runtime.linux-x64/8.0.28/microsoft.aspnetcore.app.runtime.linux-x64.8.0.28.nupkg.sha512"
   ],
   "logs": []
 }
