@@ -31,3 +31,34 @@ Stage Summary:
 - Planetary world: Planet → Continent → Region → Zone → Chunk (32x32) → Tile
 - ASCII rendering with camera, UI panels, and multiple screens
 - ECS: unified entity model (player, NPC, wolf = same structure)
+
+---
+Task ID: 1
+Agent: Main Agent
+Task: Fix HTTP connection error, multi-round tool calls, streaming display, and settings bugs
+
+Work Log:
+- Analyzed all source code: OpenAIClient, AgentBase, GameLoop, all agents, screens
+- Identified 5 major bugs causing game failure
+- Fixed OpenAIClient: Added retry logic (3 retries with exponential backoff 2s/5s/10s), 120s HttpClient timeout
+- Fixed AgentBase.StreamResponseAsync → StreamWithEventsAsync: Multi-round tool calling loop (max 20 rounds)
+- Fixed conversation history: Assistant messages now include tool_calls array for OpenAI API compliance
+- Fixed SendMessageAsync: No longer double-calls API (was streaming then calling ChatAsync again)
+- Added LLMToolCallInfo record and AssistantWithToolCalls factory method to LLMMessage
+- Added StreamEvent/StreamEventType for structured streaming events
+- Updated WorldBuilderAgent: BuildWorldWithEventsAsync returns StreamEvent objects
+- Updated GameMasterAgent: InitializePlayerWithEventsAsync for structured events
+- Updated GameLoop: World generation screen shows tool calls, AI text output, progress, round count
+- Updated GameLoop: Gameplay shows GM streaming text with cursor indicator
+- Updated GameLoop: Settings now apply to AIClientConfiguration
+- Updated GameLoop: GameMaster agent is started before streaming
+- Fixed SettingsScreen: Shows _editBuffer when editing (was showing saved value, making input invisible)
+- All changes committed to local git
+
+Stage Summary:
+- Core bug fixed: Multi-round tool calling now works (was only doing 1 round, world building needs 5-10+)
+- Core bug fixed: Conversation history was missing tool_calls in assistant messages (API rejection)
+- Core bug fixed: OpenAI API calls now retry on connection failure (was failing instantly)
+- UX fixed: World generation screen now shows real-time AI streaming and tool call progress
+- UX fixed: Settings input now visible when editing
+- Files changed: LLMMessage.cs, OpenAIClient.cs, AgentBase.cs, WorldBuilderAgent.cs, GameMasterAgent.cs, DialogAgent.cs, QuestAgent.cs, GameLoop.cs, SettingsScreen.cs
