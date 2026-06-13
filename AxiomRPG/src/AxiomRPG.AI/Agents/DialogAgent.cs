@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using AxiomRPG.Core.Interfaces;
 using AxiomRPG.ToolAPI;
 using Microsoft.Extensions.Logging;
@@ -33,5 +34,19 @@ public class DialogAgent : AgentBase
         ILogger<DialogAgent> logger
     ) : base(agentId, llmClient, toolDispatcher, eventBus, logger, DefaultSystemPrompt)
     {
+    }
+
+    /// <summary>
+    /// Handle a dialog interaction with structured events for UI display
+    /// </summary>
+    public async IAsyncEnumerable<StreamEvent> HandleDialogWithEventsAsync(
+        string playerInput,
+        [EnumeratorCancellation] CancellationToken ct = default
+    )
+    {
+        await foreach (var evt in StreamWithEventsAsync(playerInput, ct))
+        {
+            yield return evt;
+        }
     }
 }

@@ -45,16 +45,35 @@ public class WorldBuilderAgent : AgentBase
     {
     }
 
-    public async IAsyncEnumerable<string> BuildWorldAsync(
+    /// <summary>
+    /// Build the world with structured events for UI display.
+    /// Yields StreamEvent objects so the UI can show tool calls and progress.
+    /// </summary>
+    public async IAsyncEnumerable<StreamEvent> BuildWorldWithEventsAsync(
         string worldDescription,
         [EnumeratorCancellation] CancellationToken ct = default
     )
     {
         await StartAsync(ct);
 
-        await foreach (var chunk in StreamResponseAsync(worldDescription, ct))
+        await foreach (var evt in StreamWithEventsAsync(worldDescription, ct))
         {
-            yield return chunk;
+            yield return evt;
+        }
+    }
+
+    /// <summary>
+    /// Legacy text-only streaming for backward compatibility
+    /// </summary>
+    public async IAsyncEnumerable<string> BuildWorldAsync(
+        string worldDescription,
+        [EnumeratorCancellation] CancellationToken ct = default
+    )
+    {
+        await foreach (var evt in BuildWorldWithEventsAsync(worldDescription, ct))
+        {
+            if (evt.Type == StreamEventType.TextDelta)
+                yield return evt.Content;
         }
     }
 }

@@ -7,6 +7,23 @@ using Microsoft.Extensions.Logging;
 
 namespace AxiomRPG.AI;
 
+/// <summary>
+/// Streaming event type for UI display
+/// </summary>
+public enum StreamEventType
+{
+    TextDelta,
+    ToolCallStart,
+    ToolCallResult,
+    RoundComplete,
+    Error
+}
+
+/// <summary>
+/// A structured streaming event with type info for UI rendering
+/// </summary>
+public record StreamEvent(StreamEventType Type, string Content, string? Detail = null);
+
 public abstract class AgentBase : IAgent
 {
     protected readonly ILLMClient LLMClient;
@@ -20,6 +37,11 @@ public abstract class AgentBase : IAgent
     public string AgentId { get; }
     public abstract string AgentType { get; }
     public bool IsRunning { get; protected set; }
+
+    /// <summary>
+    /// Maximum number of tool-calling rounds to prevent infinite loops
+    /// </summary>
+    protected virtual int MaxToolRounds => 20;
 
     protected AgentBase(
         string agentId,
@@ -60,19 +82,21 @@ public abstract class AgentBase : IAgent
     {
         ConversationHistory.Add(LLMMessage.User(message.Content));
 
-        var responseBuilder = new StringBuilder();
-        LLMResponse? finalResponse = null;
+        // Use ChatAsync which does a single non-streaming call and collects tool calls
+        var finalResponse = await LLMClient.ChatAsync(ConversationHistory, AvailableTools, ct);
 
-        await foreach (var chunk in LLMClient.StreamChatAsync(ConversationHistory, AvailableTools, ct))
+        // Add assistant response to history (with tool calls if present)
+        if (finalResponse.ToolCalls.Count > 0)
         {
-            if (chunk.ContentDelta != null) responseBuilder.Append(chunk.ContentDelta);
+            var toolCallInfos = finalResponse.ToolCalls
+                .Select(tc => new LLMToolCallInfo(tc.CallId, tc.ToolName, tc.ArgumentsJson))
+                .ToList();
+            ConversationHistory.Add(LLMMessage.AssistantWithToolCalls(finalResponse.Content, toolCallInfos));
         }
-
-        // Get the complete response for tool calls
-        finalResponse = await LLMClient.ChatAsync(ConversationHistory, AvailableTools, ct);
-
-        // Add assistant response to history
-        ConversationHistory.Add(LLMMessage.Assistant(finalResponse.Content));
+        else
+        {
+            ConversationHistory.Add(LLMMessage.Assistant(finalResponse.Content));
+        }
 
         // Handle tool calls
         if (finalResponse.ToolCalls.Count > 0)
@@ -104,91 +128,160 @@ public abstract class AgentBase : IAgent
         }
 
         // Let LLM continue after tool results
-        var followUpBuilder = new StringBuilder();
-        await foreach (var chunk in LLMClient.StreamChatAsync(ConversationHistory, AvailableTools, ct))
+        var followUpResponse = await LLMClient.ChatAsync(ConversationHistory, AvailableTools, ct);
+
+        // Add follow-up assistant response
+        if (followUpResponse.ToolCalls.Count > 0)
         {
-            if (chunk.ContentDelta != null) followUpBuilder.Append(chunk.ContentDelta);
+            var toolCallInfos = followUpResponse.ToolCalls
+                .Select(tc => new LLMToolCallInfo(tc.CallId, tc.ToolName, tc.ArgumentsJson))
+                .ToList();
+            ConversationHistory.Add(LLMMessage.AssistantWithToolCalls(followUpResponse.Content, toolCallInfos));
+
+            // Recursively handle more tool calls
+            return await HandleToolCallsAsync(followUpResponse, ct);
+        }
+        else
+        {
+            if (!string.IsNullOrEmpty(followUpResponse.Content))
+            {
+                ConversationHistory.Add(LLMMessage.Assistant(followUpResponse.Content));
+            }
         }
 
-        var followUpContent = followUpBuilder.ToString();
-        if (!string.IsNullOrEmpty(followUpContent))
-        {
-            ConversationHistory.Add(LLMMessage.Assistant(followUpContent));
-        }
-
-        return new AgentResponse(followUpContent, false);
+        return new AgentResponse(followUpResponse.Content, false);
     }
 
     /// <summary>
-    /// Stream the agent's response with tool call handling. Returns chunks as they arrive.
+    /// Stream the agent's response with multi-round tool call handling.
+    /// Returns structured StreamEvents so the UI can show tool calls, text, and progress.
+    /// Loops until the AI stops making tool calls or max rounds reached.
     /// </summary>
-    public async IAsyncEnumerable<string> StreamResponseAsync(
+    public async IAsyncEnumerable<StreamEvent> StreamWithEventsAsync(
         string userMessage,
         [EnumeratorCancellation] CancellationToken ct = default
     )
     {
         ConversationHistory.Add(LLMMessage.User(userMessage));
 
-        var fullContent = new StringBuilder();
-        var toolCallAccumulators = new Dictionary<int, ToolCallAccumulatorData>();
-        bool hasToolCalls = false;
-
-        await foreach (var chunk in LLMClient.StreamChatAsync(ConversationHistory, AvailableTools, ct))
+        var round = 0;
+        while (round < MaxToolRounds && !ct.IsCancellationRequested)
         {
-            if (chunk.ContentDelta != null)
-            {
-                fullContent.Append(chunk.ContentDelta);
-                yield return chunk.ContentDelta;
-            }
+            round++;
+            var fullContent = new StringBuilder();
+            var toolCallAccumulators = new Dictionary<int, ToolCallAccumulatorData>();
+            bool hasToolCalls = false;
 
-            if (chunk.ToolCallDelta != null)
-            {
-                hasToolCalls = true;
-                var idx = chunk.ToolCallDelta.Index;
-                if (!toolCallAccumulators.ContainsKey(idx))
-                    toolCallAccumulators[idx] = new ToolCallAccumulatorData();
-
-                if (chunk.ToolCallDelta.CallId != null)
-                    toolCallAccumulators[idx].CallId += chunk.ToolCallDelta.CallId;
-                if (chunk.ToolCallDelta.ToolNameDelta != null)
-                    toolCallAccumulators[idx].ToolName += chunk.ToolCallDelta.ToolNameDelta;
-                if (chunk.ToolCallDelta.ArgumentsDelta != null)
-                    toolCallAccumulators[idx].Arguments += chunk.ToolCallDelta.ArgumentsDelta;
-            }
-        }
-
-        // Process tool calls after stream completes
-        if (hasToolCalls)
-        {
-            foreach (var (index, acc) in toolCallAccumulators.OrderBy(x => x.Key))
-            {
-                Logger.LogInformation("Agent {Type} calling tool: {Tool}", AgentType, acc.ToolName);
-
-                var result = await ToolDispatcher.DispatchAsync(new ToolCall(acc.CallId, acc.ToolName, acc.Arguments));
-
-                var resultObj = new JsonObject
-                {
-                    ["success"] = result.Success,
-                    ["message"] = result.Message
-                };
-                ConversationHistory.Add(LLMMessage.ToolResult(acc.CallId, resultObj));
-            }
-
-            // Continue streaming after tool results
             await foreach (var chunk in LLMClient.StreamChatAsync(ConversationHistory, AvailableTools, ct))
             {
                 if (chunk.ContentDelta != null)
                 {
                     fullContent.Append(chunk.ContentDelta);
-                    yield return chunk.ContentDelta;
+                    yield return new StreamEvent(StreamEventType.TextDelta, chunk.ContentDelta);
+                }
+
+                if (chunk.ToolCallDelta != null)
+                {
+                    hasToolCalls = true;
+                    var idx = chunk.ToolCallDelta.Index;
+                    if (!toolCallAccumulators.ContainsKey(idx))
+                        toolCallAccumulators[idx] = new ToolCallAccumulatorData();
+
+                    if (chunk.ToolCallDelta.CallId != null)
+                        toolCallAccumulators[idx].CallId += chunk.ToolCallDelta.CallId;
+                    if (chunk.ToolCallDelta.ToolNameDelta != null)
+                    {
+                        toolCallAccumulators[idx].ToolName += chunk.ToolCallDelta.ToolNameDelta;
+                        // Yield tool call start event when we first see the name
+                        if (toolCallAccumulators[idx].ToolName.Length == chunk.ToolCallDelta.ToolNameDelta.Length)
+                        {
+                            yield return new StreamEvent(StreamEventType.ToolCallStart, chunk.ToolCallDelta.ToolNameDelta);
+                        }
+                    }
+                    if (chunk.ToolCallDelta.ArgumentsDelta != null)
+                        toolCallAccumulators[idx].Arguments += chunk.ToolCallDelta.ArgumentsDelta;
                 }
             }
+
+            var textContent = fullContent.ToString();
+
+            if (!hasToolCalls)
+            {
+                // No tool calls — this is the final response
+                if (!string.IsNullOrEmpty(textContent))
+                {
+                    ConversationHistory.Add(LLMMessage.Assistant(textContent));
+                }
+                yield return new StreamEvent(StreamEventType.RoundComplete, $"Round {round} complete (no more tool calls)");
+                yield break;
+            }
+
+            // Has tool calls — add assistant message WITH tool_calls to conversation history
+            var completedToolCalls = toolCallAccumulators
+                .OrderBy(x => x.Key)
+                .Select(x => new LLMToolCallInfo(x.Value.CallId, x.Value.ToolName, x.Value.Arguments))
+                .ToList();
+
+            ConversationHistory.Add(LLMMessage.AssistantWithToolCalls(textContent, completedToolCalls));
+
+            // Execute all tool calls and add results
+            foreach (var (index, acc) in toolCallAccumulators.OrderBy(x => x.Key))
+            {
+                Logger.LogInformation("Agent {Type} calling tool: {Tool} (round {Round})", AgentType, acc.ToolName, round);
+
+                try
+                {
+                    var result = await ToolDispatcher.DispatchAsync(new ToolCall(acc.CallId, acc.ToolName, acc.Arguments));
+
+                    var resultObj = new JsonObject
+                    {
+                        ["success"] = result.Success,
+                        ["message"] = result.Message
+                    };
+                    ConversationHistory.Add(LLMMessage.ToolResult(acc.CallId, resultObj));
+
+                    var statusStr = result.Success ? "OK" : "FAILED";
+                    yield return new StreamEvent(StreamEventType.ToolCallResult,
+                        $"{acc.ToolName}: {result.Message}",
+                        statusStr);
+                }
+                catch (Exception ex)
+                {
+                    Logger.LogError(ex, "Tool {Tool} execution error", acc.ToolName);
+                    var errorObj = new JsonObject { ["success"] = false, ["message"] = ex.Message };
+                    ConversationHistory.Add(LLMMessage.ToolResult(acc.CallId, errorObj));
+
+                    yield return new StreamEvent(StreamEventType.ToolCallResult,
+                        $"{acc.ToolName}: ERROR - {ex.Message}",
+                        "ERROR");
+                }
+            }
+
+            yield return new StreamEvent(StreamEventType.RoundComplete, $"Round {round} complete ({completedToolCalls.Count} tool calls)");
+
+            // Loop continues — the LLM will see the tool results and may make more calls
         }
 
-        var finalContent = fullContent.ToString();
-        if (!string.IsNullOrEmpty(finalContent))
+        if (round >= MaxToolRounds)
         {
-            ConversationHistory.Add(LLMMessage.Assistant(finalContent));
+            Logger.LogWarning("Agent {Type} reached max tool rounds ({Max})", AgentType, MaxToolRounds);
+            yield return new StreamEvent(StreamEventType.Error, $"Reached maximum tool rounds ({MaxToolRounds})");
+        }
+    }
+
+    /// <summary>
+    /// Legacy streaming method — returns raw text chunks only.
+    /// Delegates to StreamWithEventsAsync for compatibility.
+    /// </summary>
+    public async IAsyncEnumerable<string> StreamResponseAsync(
+        string userMessage,
+        [EnumeratorCancellation] CancellationToken ct = default
+    )
+    {
+        await foreach (var evt in StreamWithEventsAsync(userMessage, ct))
+        {
+            if (evt.Type == StreamEventType.TextDelta)
+                yield return evt.Content;
         }
     }
 

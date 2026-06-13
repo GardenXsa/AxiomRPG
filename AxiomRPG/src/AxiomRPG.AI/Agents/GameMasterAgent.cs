@@ -39,7 +39,10 @@ public class GameMasterAgent : AgentBase
     {
     }
 
-    public async IAsyncEnumerable<string> InitializePlayerAsync(
+    /// <summary>
+    /// Initialize a new player using structured events for UI display.
+    /// </summary>
+    public async IAsyncEnumerable<StreamEvent> InitializePlayerWithEventsAsync(
         string playerDescription,
         string playerId,
         [EnumeratorCancellation] CancellationToken ct = default
@@ -59,9 +62,25 @@ public class GameMasterAgent : AgentBase
             5. SPAWN any nearby creatures that make sense for the location
             """;
 
-        await foreach (var chunk in StreamResponseAsync(message, ct))
+        await foreach (var evt in StreamWithEventsAsync(message, ct))
         {
-            yield return chunk;
+            yield return evt;
+        }
+    }
+
+    /// <summary>
+    /// Legacy text-only streaming for backward compatibility
+    /// </summary>
+    public async IAsyncEnumerable<string> InitializePlayerAsync(
+        string playerDescription,
+        string playerId,
+        [EnumeratorCancellation] CancellationToken ct = default
+    )
+    {
+        await foreach (var evt in InitializePlayerWithEventsAsync(playerDescription, playerId, ct))
+        {
+            if (evt.Type == StreamEventType.TextDelta)
+                yield return evt.Content;
         }
     }
 }

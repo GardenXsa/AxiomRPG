@@ -18,20 +18,50 @@ public class SettingsScreen : IScreen
         buffer.WriteCentered(2, "╔════ SETTINGS ════╗", "#FFD700");
 
         var fields = new[] { "API Key", "API Base URL", "Model" };
-        var values = new[] { MaskString(ApiKey), ApiBaseUrl, Model };
 
         for (var i = 0; i < fields.Length; i++)
         {
             var y = 6 + i * 4;
             buffer.Write(4, y, fields[i] + ":", i == _selectedField ? "#FFD700" : "#C0C0C0");
-            buffer.Write(4, y + 1, values[i], "#FFFFFF");
+
+            // Show edit buffer when editing, otherwise show saved value
+            string displayValue;
             if (i == _selectedField && _isEditing)
             {
-                buffer.Write(4 + values[i].Length, y + 1, "_", "#FFD700");
+                displayValue = _editBuffer;
+            }
+            else
+            {
+                displayValue = i switch
+                {
+                    0 => MaskString(ApiKey),
+                    1 => ApiBaseUrl,
+                    2 => Model,
+                    _ => ""
+                };
+            }
+
+            // Truncate to fit display width
+            var maxLen = buffer.Width - 8;
+            if (displayValue.Length > maxLen) displayValue = displayValue[..maxLen];
+
+            buffer.Write(4, y + 1, displayValue, "#FFFFFF");
+
+            // Show blinking cursor when editing
+            if (i == _selectedField && _isEditing)
+            {
+                var cursorX = 4 + Math.Min(_editBuffer.Length, maxLen);
+                if (cursorX < buffer.Width)
+                {
+                    buffer.SetCell(cursorX, y + 1, '_', "#FFD700");
+                }
             }
         }
 
         buffer.WriteCentered(buffer.Height - 4, "Tab: Next Field  |  Enter: Edit/Confirm  |  Esc: Back", "#666666");
+
+        // Show config hint
+        buffer.WriteCentered(buffer.Height - 2, "Configure your OpenAI-compatible API endpoint", "#444444");
     }
 
     public bool HandleInput(ConsoleKeyInfo key)
@@ -55,7 +85,7 @@ public class SettingsScreen : IScreen
                 _editBuffer = _editBuffer[..^1];
                 return true;
             }
-            if (key.KeyChar >= ' ' && _editBuffer.Length < 200)
+            if (key.KeyChar >= ' ' && _editBuffer.Length < 500)
             {
                 _editBuffer += key.KeyChar;
                 return true;

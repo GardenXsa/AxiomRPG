@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using AxiomRPG.Core.Interfaces;
 using AxiomRPG.ToolAPI;
 using Microsoft.Extensions.Logging;
@@ -34,5 +35,19 @@ public class QuestAgent : AgentBase
         ILogger<QuestAgent> logger
     ) : base(agentId, llmClient, toolDispatcher, eventBus, logger, DefaultSystemPrompt)
     {
+    }
+
+    /// <summary>
+    /// Handle a quest event with structured events for UI display
+    /// </summary>
+    public async IAsyncEnumerable<StreamEvent> HandleQuestEventWithEventsAsync(
+        string questEvent,
+        [EnumeratorCancellation] CancellationToken ct = default
+    )
+    {
+        await foreach (var evt in StreamWithEventsAsync(questEvent, ct))
+        {
+            yield return evt;
+        }
     }
 }

@@ -14,6 +14,12 @@ public class OpenAIClient : ILLMClient, IDisposable
     private readonly HttpClient _httpClient;
     private readonly AIClientConfiguration _config;
     private readonly ILogger<OpenAIClient> _logger;
+    private const int MaxRetries = 3;
+    private static readonly TimeSpan[] RetryDelays = {
+        TimeSpan.FromSeconds(2),
+        TimeSpan.FromSeconds(5),
+        TimeSpan.FromSeconds(10)
+    };
 
     public OpenAIClient(AIClientConfiguration config, ILogger<OpenAIClient> logger)
     {
@@ -21,7 +27,8 @@ public class OpenAIClient : ILLMClient, IDisposable
         _logger = logger;
         _httpClient = new HttpClient
         {
-            BaseAddress = new Uri(config.ApiBaseUrl)
+            BaseAddress = new Uri(config.ApiBaseUrl),
+            Timeout = TimeSpan.FromSeconds(120) // 2 min timeout for long tool-call responses
         };
         _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", config.ApiKey);
         if (!string.IsNullOrEmpty(config.OrganizationId))
@@ -38,13 +45,54 @@ public class OpenAIClient : ILLMClient, IDisposable
     {
         var requestBody = BuildRequestBody(messages, tools, stream: true);
 
-        using var request = new HttpRequestMessage(HttpMethod.Post, "/chat/completions")
-        {
-            Content = JsonContent.Create(requestBody)
-        };
+        HttpResponseMessage? response = null;
+        Exception? lastException = null;
 
-        var response = await _httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, ct);
-        response.EnsureSuccessStatusCode();
+        for (var attempt = 0; attempt <= MaxRetries; attempt++)
+        {
+            if (ct.IsCancellationRequested) yield break;
+
+            try
+            {
+                using var request = new HttpRequestMessage(HttpMethod.Post, "/chat/completions")
+                {
+                    Content = JsonContent.Create(requestBody)
+                };
+
+                response = await _httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, ct);
+                response.EnsureSuccessStatusCode();
+                break; // Success — exit retry loop
+            }
+            catch (HttpRequestException ex) when (attempt < MaxRetries)
+            {
+                lastException = ex;
+                _logger.LogWarning(ex, "HTTP request failed (attempt {Attempt}/{Max}), retrying in {Delay}s...",
+                    attempt + 1, MaxRetries + 1, RetryDelays[attempt].TotalSeconds);
+
+                response?.Dispose();
+                response = null;
+
+                await Task.Delay(RetryDelays[attempt], ct);
+            }
+            catch (TaskCanceledException ex) when (attempt < MaxRetries && !ct.IsCancellationRequested)
+            {
+                // Timeout, not user cancellation
+                lastException = ex;
+                _logger.LogWarning(ex, "HTTP request timed out (attempt {Attempt}/{Max}), retrying in {Delay}s...",
+                    attempt + 1, MaxRetries + 1, RetryDelays[attempt].TotalSeconds);
+
+                response?.Dispose();
+                response = null;
+
+                await Task.Delay(RetryDelays[attempt], ct);
+            }
+        }
+
+        if (response == null)
+        {
+            _logger.LogError(lastException, "All {Max} retries exhausted for StreamChatAsync", MaxRetries + 1);
+            throw lastException ?? new HttpRequestException("Failed to connect after retries");
+        }
 
         using var stream = await response.Content.ReadAsStreamAsync(ct);
         using var reader = new StreamReader(stream);
@@ -115,6 +163,8 @@ public class OpenAIClient : ILLMClient, IDisposable
             if (streamChunk != null)
                 yield return streamChunk;
         }
+
+        response.Dispose();
     }
 
     public async Task<LLMResponse> ChatAsync(
@@ -149,22 +199,63 @@ public class OpenAIClient : ILLMClient, IDisposable
             toolCalls.Add(new LLMToolCall(acc.CallId, acc.ToolName, acc.Arguments));
         }
 
-        return new LLMResponse(fullContent.ToString(), toolCalls, true, "stop");
+        return new LLMResponse(fullContent.ToString(), toolCalls, true,
+            toolCalls.Count > 0 ? "tool_calls" : "stop");
     }
 
     private JsonObject BuildRequestBody(List<LLMMessage> messages, List<ToolDefinition>? tools, bool stream)
     {
+        var messagesArray = new JsonArray();
+
+        foreach (var msg in messages)
+        {
+            var msgObj = new JsonObject { ["role"] = msg.Role };
+
+            if (msg.Role == "tool")
+            {
+                // Tool result message
+                msgObj["tool_call_id"] = msg.ToolCallId;
+                msgObj["content"] = msg.ToolResultData?.ToJsonString() ?? "";
+            }
+            else if (msg.Role == "assistant" && msg.ToolCalls != null && msg.ToolCalls.Count > 0)
+            {
+                // Assistant message with tool_calls
+                if (msg.Content != null)
+                    msgObj["content"] = msg.Content;
+                else
+                    msgObj["content"] = NullNode;
+
+                var toolCallsArray = new JsonArray();
+                foreach (var tc in msg.ToolCalls)
+                {
+                    toolCallsArray.Add(new JsonObject
+                    {
+                        ["id"] = tc.CallId,
+                        ["type"] = "function",
+                        ["function"] = new JsonObject
+                        {
+                            ["name"] = tc.ToolName,
+                            ["arguments"] = tc.ArgumentsJson
+                        }
+                    });
+                }
+                msgObj["tool_calls"] = toolCallsArray;
+            }
+            else
+            {
+                msgObj["content"] = msg.Content ?? "";
+            }
+
+            messagesArray.Add(msgObj);
+        }
+
         var body = new JsonObject
         {
             ["model"] = _config.Model,
             ["stream"] = stream,
             ["max_tokens"] = _config.MaxTokens,
             ["temperature"] = _config.Temperature,
-            ["messages"] = new JsonArray(messages.Select(m => new JsonObject
-            {
-                ["role"] = m.Role,
-                ["content"] = m.Content ?? ""
-            }).ToArray<JsonNode>())
+            ["messages"] = messagesArray
         };
 
         if (tools != null && tools.Count > 0)
@@ -174,6 +265,11 @@ public class OpenAIClient : ILLMClient, IDisposable
 
         return body;
     }
+
+    /// <summary>
+    /// JSON null literal node for OpenAI API compatibility
+    /// </summary>
+    private static JsonNode NullNode => JsonNode.Parse("null")!;
 
     public void Dispose()
     {
