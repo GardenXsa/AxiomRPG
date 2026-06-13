@@ -1,2 +1,13 @@
+# System / workspace artifacts
 skills/
 node_modules/
+.env
+worklog.md
+tool-results/
+download/
+upload/
+db/
+
+# Build artifacts
+**/bin/
+**/obj/
